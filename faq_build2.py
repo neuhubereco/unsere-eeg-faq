@@ -70,9 +70,14 @@ summary:before{{content:"+";color:var(--acc);font-weight:700;margin-right:9px}}d
 .a strong{{color:var(--ink)}}
 .badge{{background:var(--acc);color:#fff;font-size:.72rem;padding:1px 7px;border-radius:10px;margin-left:8px;font-weight:600}}
 .sp{{background:var(--spbg);color:var(--sp);font-size:.7rem;padding:1px 7px;border-radius:6px;margin-right:8px;font-weight:600}}
-footer{{color:var(--mut);font-size:.82rem;text-align:center;padding:28px 20px 46px}}
-footer a{{color:var(--acc);text-decoration:none;font-weight:600;display:inline-block;margin-top:10px}}
-footer a:hover{{text-decoration:underline}}
+footer{{color:var(--mut);font-size:.82rem;text-align:center;padding:20px 20px 46px}}
+.linkband{{max-width:840px;margin:34px auto 0;padding:0 20px;display:flex;gap:14px;flex-wrap:wrap}}
+.bigbtn{{flex:1;min-width:250px;display:block;text-align:center;text-decoration:none;border-radius:14px;padding:18px 16px;font-weight:700;font-size:1.05rem;line-height:1.35}}
+.bigbtn small{{display:block;font-weight:400;font-size:.85rem;margin-top:4px;opacity:.85}}
+.bigbtn.primary{{background:var(--acc);color:#fff}}
+.bigbtn.primary:hover{{background:#256a4c}}
+.bigbtn.ghost{{background:var(--card);color:var(--ink);border:2px solid var(--acc)}}
+.bigbtn.ghost:hover{{background:#eef5f1}}
 .hide{{display:none}}
 </style></head><body>
 <header><div class="wrap"><h1>EEG Faktura – Häufige Fragen</h1>
@@ -86,11 +91,12 @@ footer a:hover{{text-decoration:underline}}
 {portal}
 {tool}
 </main>
+<div class="linkband">
+<a class="bigbtn primary" href="https://unsere-eeg.at/">🌱 unsere-eeg.at<small>Energiegemeinschaft gründen &amp; betreiben — wir helfen dir dabei</small></a>
+<a class="bigbtn ghost" href="https://github.com/neuhubereco/unsere-eeg-faq">✏️ FAQ verbessern<small>offen auf GitHub — Korrekturen &amp; Ergänzungen willkommen</small></a>
+</div>
 <footer>{tot} Einträge · Stand {stamp} · Automatisch per KI aus den Community-Chats zusammengefasst und mit <strong>lokaler KI (on-premise)</strong> laufend aktuell gehalten. Ohne Gewähr.<br>
-Kein offizieller Support. Bei individuellen Fällen: Netzbetreiber bzw. EEG-Faktura-Betreiber kontaktieren.<br>
-<a href="https://unsere-eeg.at/">🌱 unsere-eeg.at — Energiegemeinschaft gründen &amp; betreiben</a>
-&nbsp;·&nbsp;
-<a href="https://github.com/neuhubereco/unsere-eeg-faq">✏️ FAQ auf GitHub verbessern</a></footer>
+Kein offizieller Support. Bei individuellen Fällen: Netzbetreiber bzw. EEG-Faktura-Betreiber kontaktieren.</footer>
 <script>
 var tabs=document.querySelectorAll('.tab'),s=document.getElementById('s');
 tabs.forEach(function(t){{t.onclick=function(){{tabs.forEach(x=>x.classList.remove('on'));t.classList.add('on');
