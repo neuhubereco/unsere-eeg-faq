@@ -120,7 +120,12 @@ def main():
     log(f"neu: {added}, hochgezaehlt: {merged}")
     if DRY: log("(DRY-RUN — nichts gespeichert/deployt)"); return
     json.dump(state,open(BASE+"/state.json","w"))
-    json.dump(data,open(BASE+"/faq_data.json","w"),ensure_ascii=False,indent=1)
+    # kanonisch: sortiert (Kategorie, count absteigend, Frage) + pretty — PR-freundliche, stabile Diffs
+    def _key(e): return (CATS.index(e["kategorie"]) if e["kategorie"] in CATS else 99, -e.get("count",1), e["frage"].lower())
+    for _p in ("portal","tool"):
+        for _b in ("faq","spezial"):
+            data[_p][_b]=sorted(data[_p][_b],key=_key)
+    open(BASE+"/faq_data.json","w").write(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
     json.dump(embs,open(BASE+"/embeddings.json","w"))
     # Aenderungen ins Repo zurueck (Community sieht/reviewt sie dort)
     if added or merged:
