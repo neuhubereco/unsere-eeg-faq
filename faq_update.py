@@ -20,6 +20,10 @@ CATS=["Einrichtung","Mitglieder","Zählpunkte/Netzbetreiber","Abrechnung","Tarif
 
 def log(*a): print(datetime.datetime.now().strftime("%H:%M:%S"),*a,flush=True)
 
+def git(*args):
+    r=subprocess.run(["git","-C",BASE]+list(args),capture_output=True,text=True,timeout=120)
+    return r.returncode, (r.stdout+r.stderr).strip()
+
 def ram_ok():
     kb=int([l for l in open("/proc/meminfo") if l.startswith("MemAvailable")][0].split()[1])
     return kb > MIN_RAM_GB*1024*1024
@@ -61,6 +65,8 @@ PROMPT=("Du bekommst Nachrichten aus einer WhatsApp-Support-Gruppe rund um 'EEG 
 
 def main():
     if not ram_ok(): log("ABBRUCH: <%d GB RAM frei"%MIN_RAM_GB); return
+    # Community-PRs / Remote-Aenderungen zuerst reinziehen
+    rc,out=git("pull","--rebase","origin","main"); log("git pull:",out[:120] or "ok")
     state=json.load(open(BASE+"/state.json"))
     data=json.load(open(BASE+"/faq_data.json"))
     try: embs=json.load(open(BASE+"/embeddings.json"))
@@ -114,8 +120,14 @@ def main():
     log(f"neu: {added}, hochgezaehlt: {merged}")
     if DRY: log("(DRY-RUN — nichts gespeichert/deployt)"); return
     json.dump(state,open(BASE+"/state.json","w"))
-    json.dump(data,open(BASE+"/faq_data.json","w"),ensure_ascii=False)
+    json.dump(data,open(BASE+"/faq_data.json","w"),ensure_ascii=False,indent=1)
     json.dump(embs,open(BASE+"/embeddings.json","w"))
+    # Aenderungen ins Repo zurueck (Community sieht/reviewt sie dort)
+    if added or merged:
+        git("add","faq_data.json")
+        rc,_=git("commit","-m","auto-update: +%d neu, %d hochgezählt (%s)"%(added,merged,datetime.date.today().isoformat()))
+        if rc==0:
+            rc,out=git("push","origin","main"); log("git push:","ok" if rc==0 else out[:120])
     # Rebuild + Deploy (Stand-Datum = heute)
     stamp=datetime.date.today().strftime("%d.%m.%Y")
     r=subprocess.run(["python3",BASE+"/faq_build2.py",BASE+"/faq_data.json","/tmp/faq_index.html",stamp],capture_output=True,text=True)

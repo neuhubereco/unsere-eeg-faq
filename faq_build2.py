@@ -88,7 +88,9 @@ footer a:hover{{text-decoration:underline}}
 </main>
 <footer>{tot} Einträge · Stand {stamp} · Automatisch per KI aus den Community-Chats zusammengefasst und mit <strong>lokaler KI (on-premise)</strong> laufend aktuell gehalten. Ohne Gewähr.<br>
 Kein offizieller Support. Bei individuellen Fällen: Netzbetreiber bzw. EEG-Faktura-Betreiber kontaktieren.<br>
-<a href="https://unsere-eeg.at/">🌱 unsere-eeg.at — Energiegemeinschaft gründen &amp; betreiben</a></footer>
+<a href="https://unsere-eeg.at/">🌱 unsere-eeg.at — Energiegemeinschaft gründen &amp; betreiben</a>
+&nbsp;·&nbsp;
+<a href="https://github.com/neuhubereco/unsere-eeg-faq">✏️ FAQ auf GitHub verbessern</a></footer>
 <script>
 var tabs=document.querySelectorAll('.tab'),s=document.getElementById('s');
 tabs.forEach(function(t){{t.onclick=function(){{tabs.forEach(x=>x.classList.remove('on'));t.classList.add('on');
