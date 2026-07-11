@@ -38,5 +38,9 @@ Jeder Eintrag:
 - `faq_build2.py` — generiert die statische Seite aus `faq_data.json`
 - `faq_update.py` — wöchentlicher Auto-Update-Job (läuft on-premise; zieht neue Community-Fragen,
   dedupliziert per Embeddings, committet hierher zurück)
+- `bookstack_sync.py` — synct die FAQ zusätzlich ins offizielle EEG-Faktura-Handbuch
+  (docs.eegfaktura.at, Kapitel "FAQ (WhatsApp Zusammenfassung)"): pro Abschnitt eine Seite,
+  idempotent, Update nur bei Änderung. Läuft wöchentlich nach dem Auto-Update; Zugangsdaten
+  liegen lokal in `bookstack.env` (nie im Repo, siehe `bookstack.env.example`).
 
 *Kein offizieller Support des EEG-Faktura-Betreibers. Ohne Gewähr.*

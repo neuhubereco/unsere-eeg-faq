@@ -3,3 +3,6 @@ embeddings.json
 update.log
 __pycache__/
 *.html
+bookstack.env
+bookstack_state.json
+bookstack_sync.log
