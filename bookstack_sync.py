@@ -6,27 +6,36 @@ Idempotent: pro Abschnitt (portal/tool × faq/spezial) genau eine Seite,
 identifiziert über den exakten Seitennamen im Kapitel; Update nur bei
 Content-Änderung (SHA-256 in bookstack_state.json).
 
+Auth: Session-Login mit Benutzer/Passwort über den OIDC-Flow
+(docs → login.eegfaktura.at Keycloak), da die Rolle keinen API-Zugriff hat.
+Geschrieben wird über die normalen Web-Endpoints (create-page/draft, PUT page).
+GENAU EIN Login-Versuch pro Lauf — kein Retry (Keycloak-Lockout-Schutz).
+
 Default = Dry-Run (zeigt geplante Aktionen, schreibt nichts).
   --apply   tatsächlich anlegen/aktualisieren
+  --check   nur Login + vorhandene Seiten im Kapitel auflisten
   --dump    gerenderte HTML-Seiten nach /tmp/bookstack_pages/ schreiben
 
-Konfiguration: /root/faq/bookstack.env (KEY=VALUE, nicht im Repo!)
-  BOOKSTACK_TOKEN_ID / BOOKSTACK_TOKEN_SECRET  (Pflicht fürs Schreiben;
-      API-Token: docs.eegfaktura.at → Mein Account → API-Tokens)
+Konfiguration: /root/faq/bookstack.env (KEY=VALUE, chmod 600, NIE im Repo!)
+  BOOKSTACK_USER / BOOKSTACK_PASSWORD  (Pflicht; eegfaktura.at-Konto)
   BOOKSTACK_URL          default https://docs.eegfaktura.at
-  BOOKSTACK_CHAPTER_ID   default 43
+  BOOKSTACK_BOOK         default faq
+  BOOKSTACK_CHAPTER      default faq-whatsapp-zusammenfassung
   BOOKSTACK_INCLUDE_TOOL default 1 (0 = nur Portal-Seiten)
 
-Kein Auto-Retry (bewusst): jeder API-Call genau 1 Versuch, Fehler beenden
-den Lauf laut. Ohne konfigurierten Token beendet sich --apply mit Exit 0
+Ohne konfigurierte Zugangsdaten beendet sich --apply mit Exit 0
 ("nicht konfiguriert"), damit der systemd-Timer sauber durchläuft.
 """
 import datetime
 import hashlib
+import html as htmlmod
+import http.cookiejar
 import json
 import os
+import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +45,7 @@ STATE_FILE = os.path.join(BASE, "bookstack_state.json")
 
 FAQ_SITE = "https://faq.unsere-eeg.at"
 REPO_URL = "https://github.com/neuhubereco/unsere-eeg-faq"
+UA = "unsere-eeg-faq bookstack-sync (florian@neuhuber.net)"
 
 
 def log(*a):
@@ -51,37 +61,126 @@ def load_env():
                 continue
             k, v = line.split("=", 1)
             env[k.strip()] = v.strip()
-    for k in ("BOOKSTACK_URL", "BOOKSTACK_TOKEN_ID", "BOOKSTACK_TOKEN_SECRET",
-              "BOOKSTACK_CHAPTER_ID", "BOOKSTACK_INCLUDE_TOOL"):
+    for k in ("BOOKSTACK_URL", "BOOKSTACK_USER", "BOOKSTACK_PASSWORD",
+              "BOOKSTACK_BOOK", "BOOKSTACK_CHAPTER", "BOOKSTACK_INCLUDE_TOOL"):
         if os.environ.get(k):
             env[k] = os.environ[k]
     env.setdefault("BOOKSTACK_URL", "https://docs.eegfaktura.at")
-    env.setdefault("BOOKSTACK_CHAPTER_ID", "43")
+    env.setdefault("BOOKSTACK_BOOK", "faq")
+    env.setdefault("BOOKSTACK_CHAPTER", "faq-whatsapp-zusammenfassung")
     env.setdefault("BOOKSTACK_INCLUDE_TOOL", "1")
     return env
 
 
-def api(env, method, path, payload=None):
-    """Genau EIN Versuch pro Call — kein Retry (Lockout-/Abuse-Schutz)."""
-    url = env["BOOKSTACK_URL"].rstrip("/") + path
-    data = json.dumps(payload).encode() if payload is not None else None
-    req = urllib.request.Request(url, data=data, method=method, headers={
-        "Authorization": "Token %s:%s" % (env["BOOKSTACK_TOKEN_ID"],
-                                          env["BOOKSTACK_TOKEN_SECRET"]),
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "User-Agent": "unsere-eeg-faq bookstack-sync (florian@neuhuber.net)",
-    })
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode())
-    except urllib.error.HTTPError as e:
-        body = e.read().decode(errors="replace")[:400]
-        raise SystemExit("API %s %s -> HTTP %s: %s" % (method, path, e.code, body))
+class Session:
+    """Cookie-Session über docs.eegfaktura.at + login.eegfaktura.at."""
+
+    def __init__(self, base):
+        self.base = base.rstrip("/")
+        self.jar = http.cookiejar.CookieJar()
+        self.op = urllib.request.build_opener(
+            urllib.request.HTTPCookieProcessor(self.jar))
+        self.csrf = None
+
+    def req(self, url, form=None, method=None):
+        """Ein Request (Redirects werden gefolgt). -> (final_url, body)"""
+        data = urllib.parse.urlencode(form).encode() if form is not None else None
+        r = urllib.request.Request(url, data=data, headers={
+            "User-Agent": UA,
+            "Accept": "text/html,application/xhtml+xml,*/*",
+        }, method=method)
+        try:
+            with self.op.open(r, timeout=30) as resp:
+                return resp.geturl(), resp.read().decode(errors="replace")
+        except urllib.error.HTTPError as e:
+            body = e.read().decode(errors="replace")
+            raise SystemExit("HTTP %s bei %s %s: %s" % (
+                e.code, method or ("POST" if form is not None else "GET"),
+                url, body[:300]))
+
+    def _grab_csrf(self, body):
+        m = re.search(r'<meta name="token" content="([^"]+)"', body)
+        if m:
+            self.csrf = m.group(1)
+
+    def login(self, user, password):
+        """OIDC-Login, GENAU EIN Versuch. Wirft SystemExit bei Fehlschlag."""
+        _, body = self.req(self.base + "/login")
+        self._grab_csrf(body)
+        if not self.csrf:
+            raise SystemExit("Login-Seite ohne CSRF-Token — Layout geändert?")
+        # Start OIDC-Flow -> landet (nach Redirects) auf der Keycloak-Maske
+        url, body = self.req(self.base + "/oidc/login", form={"_token": self.csrf})
+        if "login.eegfaktura.at" not in url:
+            # bereits eingeloggt (bestehende Session)?
+            if self._logged_in(body):
+                log("Session bestand bereits — Login übersprungen.")
+                self._grab_csrf(body)
+                return
+            raise SystemExit("OIDC-Redirect kam nicht bei Keycloak an: " + url)
+        actions = [a for a in re.findall(r'<form[^>]+action="([^"]+)"', body)
+                   if "login-actions" in a]
+        if not actions:
+            raise SystemExit("Keycloak-Loginformular nicht gefunden (%s)" % url)
+        action = htmlmod.unescape(actions[0])
+        url, body = self.req(action, form={
+            "username": user, "password": password, "credentialId": ""})
+        if not url.startswith(self.base) or not self._logged_in(body):
+            hint = ""
+            m = re.search(r'kc-error-message.*?<span[^>]*>([^<]+)', body, re.S)
+            if m:
+                hint = " — Keycloak: " + m.group(1).strip()
+            raise SystemExit("Login fehlgeschlagen (kein 2. Versuch!)%s" % hint)
+        self._grab_csrf(body)
+        log("eingeloggt als", user)
+
+    def _logged_in(self, body):
+        return "/logout" in body or "Abmelden" in body
+
+
+def chapter_pages(sess, env):
+    """Vorhandene Seiten im Kapitel: {name: page_slug}"""
+    url = "%s/books/%s/chapter/%s" % (sess.base, env["BOOKSTACK_BOOK"],
+                                      env["BOOKSTACK_CHAPTER"])
+    _, body = sess.req(url)
+    sess._grab_csrf(body)
+    # nur Hauptinhalt parsen — die Sidebar listet ALLE Buch-Seiten
+    idx = body.find('id="main-content"')
+    if idx > -1:
+        body = body[idx:]
+    pages = {}
+    pat = (r'href="%s/books/%s/page/([^"]+)"[^>]*>\s*.*?'
+           r'entity-list-item-name[^>]*>([^<]+)<'
+           % (re.escape(sess.base), re.escape(env["BOOKSTACK_BOOK"])))
+    for slug, name in re.findall(pat, body, re.S):
+        pages[htmlmod.unescape(name).strip()] = slug
+    return pages
+
+
+def create_page(sess, env, name, page_html):
+    """Neue Seite im Kapitel: create-page legt Draft an, POST publiziert."""
+    url, body = sess.req("%s/books/%s/chapter/%s/create-page"
+                         % (sess.base, env["BOOKSTACK_BOOK"], env["BOOKSTACK_CHAPTER"]))
+    m = re.match(r'%s/books/%s/draft/(\d+)$'
+                 % (re.escape(sess.base), re.escape(env["BOOKSTACK_BOOK"])), url)
+    if not m:
+        raise SystemExit("create-page: unerwartete Draft-URL " + url)
+    sess._grab_csrf(body)
+    final_url, _ = sess.req(
+        "%s/books/%s/draft/%s" % (sess.base, env["BOOKSTACK_BOOK"], m.group(1)),
+        form={"_token": sess.csrf, "name": name, "html": page_html})
+    slug = final_url.rstrip("/").split("/page/")[-1]
+    return slug
+
+
+def update_page(sess, env, slug, name, page_html):
+    sess.req("%s/books/%s/page/%s" % (sess.base, env["BOOKSTACK_BOOK"], slug),
+             form={"_token": sess.csrf, "_method": "PUT", "name": name,
+                   "html": page_html,
+                   "summary": "Auto-Sync von faq.unsere-eeg.at"})
 
 
 def render_page(entries, section_label, stamp):
-    """Ein Abschnitt (z.B. Portal/faq) -> eine BookStack-Seite (HTML)."""
     out = []
     out.append(
         '<p class="callout info">Automatisch erstellte Zusammenfassung der '
@@ -113,22 +212,20 @@ def build_pages(data, include_tool, stamp):
         entries = data.get(prod, {}).get(sec, [])
         if not entries:
             continue
-        pages.append({
-            "key": "%s-%s" % (prod, sec),
-            "name": name,
-            "html": render_page(entries, sec_label, stamp),
-        })
+        pages.append({"key": "%s-%s" % (prod, sec), "name": name,
+                      "html": render_page(entries, sec_label, stamp)})
     return pages
 
 
 def main():
     apply_mode = "--apply" in sys.argv
+    check_mode = "--check" in sys.argv
     dump = "--dump" in sys.argv
 
     env = load_env()
-    has_creds = bool(env.get("BOOKSTACK_TOKEN_ID") and env.get("BOOKSTACK_TOKEN_SECRET"))
-    if apply_mode and not has_creds:
-        log("bookstack_sync: kein API-Token konfiguriert (%s) — übersprungen." % ENV_FILE)
+    has_creds = bool(env.get("BOOKSTACK_USER") and env.get("BOOKSTACK_PASSWORD"))
+    if (apply_mode or check_mode) and not has_creds:
+        log("bookstack_sync: keine Zugangsdaten konfiguriert (%s) — übersprungen." % ENV_FILE)
         return 0
 
     data = json.load(open(DATA_FILE))
@@ -147,35 +244,37 @@ def main():
         state = json.load(open(STATE_FILE))
 
     existing = {}
+    sess = None
     if has_creds:
-        chapter = api(env, "GET", "/api/chapters/%s" % env["BOOKSTACK_CHAPTER_ID"])
-        for p in chapter.get("pages", []):
-            existing[p["name"]] = p["id"]
-        log("Kapitel %s: '%s', %d vorhandene Seiten"
-            % (env["BOOKSTACK_CHAPTER_ID"], chapter.get("name"), len(existing)))
+        sess = Session(env["BOOKSTACK_URL"])
+        sess.login(env["BOOKSTACK_USER"], env["BOOKSTACK_PASSWORD"])
+        existing = chapter_pages(sess, env)
+        log("Kapitel '%s': %d vorhandene Seite(n): %s"
+            % (env["BOOKSTACK_CHAPTER"], len(existing),
+               ", ".join(existing) or "—"))
+        if check_mode:
+            return 0
     else:
-        log("Hinweis: kein Token — Bestand im Kapitel unbekannt (reiner Render-Check).")
+        log("Hinweis: keine Zugangsdaten — Bestand unbekannt (reiner Render-Check).")
 
     changed = 0
     for p in pages:
         h = hashlib.sha256(p["html"].encode()).hexdigest()
-        page_id = existing.get(p["name"]) or state.get(p["key"], {}).get("page_id")
-        if page_id and state.get(p["key"], {}).get("hash") == h and p["name"] in existing:
+        slug = existing.get(p["name"])
+        if slug and state.get(p["key"], {}).get("hash") == h:
             log("SKIP  ", p["name"], "(unverändert)")
             continue
-        action = "UPDATE" if page_id and p["name"] in existing else "CREATE"
-        log("%s%s %s (%d Zeichen)" % ("" if apply_mode else "würde ", action, p["name"], len(p["html"])))
+        action = "UPDATE" if slug else "CREATE"
+        log("%s%s %s (%d Zeichen)" % ("" if apply_mode else "würde ",
+                                      action, p["name"], len(p["html"])))
         if apply_mode:
             if action == "CREATE":
-                res = api(env, "POST", "/api/pages", {
-                    "chapter_id": int(env["BOOKSTACK_CHAPTER_ID"]),
-                    "name": p["name"], "html": p["html"]})
-                page_id = res["id"]
+                slug = create_page(sess, env, p["name"], p["html"])
             else:
-                api(env, "PUT", "/api/pages/%d" % page_id,
-                    {"name": p["name"], "html": p["html"]})
-            state[p["key"]] = {"page_id": page_id, "hash": h}
+                update_page(sess, env, slug, p["name"], p["html"])
+            state[p["key"]] = {"slug": slug, "hash": h}
             changed += 1
+            log("   ->", "%s/books/%s/page/%s" % (sess.base, env["BOOKSTACK_BOOK"], slug))
 
     if apply_mode:
         json.dump(state, open(STATE_FILE, "w"), indent=1)
