@@ -2,9 +2,14 @@
 """bookstack_sync.py — synct faq_data.json in das BookStack-Kapitel
 "FAQ (WhatsApp Zusammenfassung)" auf docs.eegfaktura.at.
 
-Idempotent: pro Abschnitt (portal/tool × faq/spezial) genau eine Seite,
-identifiziert über den exakten Seitennamen im Kapitel; Update nur bei
-Content-Änderung (SHA-256 in bookstack_state.json).
+Struktur: eine Seite pro Kategorie (Einrichtung, Mitglieder, …) mit den
+häufigen Fragen oben und den Spezialfällen darunter; Mini-Kategorien
+(<3 Einträge) wandern in "Sonstiges". Nur das Online-Portal
+(BOOKSTACK_INCLUDE_TOOL=1 ergänzt eine Sammelseite fürs Desktop-Tool).
+
+Idempotent: Seiten werden über den exakten Namen im Kapitel wiedergefunden;
+Update nur bei Content-Änderung (SHA-256 in bookstack_state.json). Eigene
+Seiten, die nicht mehr im Plan sind, werden gelöscht (BookStack-Papierkorb).
 
 Auth: Session-Login mit Benutzer/Passwort über den OIDC-Flow
 (docs → login.eegfaktura.at Keycloak), da die Rolle keinen API-Zugriff hat.
@@ -21,7 +26,7 @@ Konfiguration: /root/faq/bookstack.env (KEY=VALUE, chmod 600, NIE im Repo!)
   BOOKSTACK_URL          default https://docs.eegfaktura.at
   BOOKSTACK_BOOK         default faq
   BOOKSTACK_CHAPTER      default faq-whatsapp-zusammenfassung
-  BOOKSTACK_INCLUDE_TOOL default 1 (0 = nur Portal-Seiten)
+  BOOKSTACK_INCLUDE_TOOL default 0 (1 = zusätzlich Desktop-Tool-Seite)
 
 Ohne konfigurierte Zugangsdaten beendet sich --apply mit Exit 0
 ("nicht konfiguriert"), damit der systemd-Timer sauber durchläuft.
@@ -68,7 +73,7 @@ def load_env():
     env.setdefault("BOOKSTACK_URL", "https://docs.eegfaktura.at")
     env.setdefault("BOOKSTACK_BOOK", "faq")
     env.setdefault("BOOKSTACK_CHAPTER", "faq-whatsapp-zusammenfassung")
-    env.setdefault("BOOKSTACK_INCLUDE_TOOL", "1")
+    env.setdefault("BOOKSTACK_INCLUDE_TOOL", "0")
     return env
 
 
@@ -180,40 +185,103 @@ def update_page(sess, env, slug, name, page_html):
                    "summary": "Auto-Sync von faq.unsere-eeg.at"})
 
 
-def render_page(entries, section_label, stamp):
+def page_exists(sess, env, slug):
+    url = "%s/books/%s/page/%s" % (sess.base, env["BOOKSTACK_BOOK"], slug)
+    r = urllib.request.Request(url, headers={"User-Agent": UA})
+    try:
+        with sess.op.open(r, timeout=30):
+            return True
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return False
+        return True
+
+
+def delete_page(sess, env, slug):
+    """Löschen = BookStack-Papierkorb. Liefert True nur bei verifiziertem
+    Erfolg — ohne Delete-Recht antwortet BookStack mit Redirect+Flash
+    statt Fehlercode (2026-07-11 live beobachtet)."""
+    sess.req("%s/books/%s/page/%s" % (sess.base, env["BOOKSTACK_BOOK"], slug),
+             form={"_token": sess.csrf, "_method": "DELETE"})
+    return not page_exists(sess, env, slug)
+
+
+def _callout(stamp, n_faq, n_spez):
+    teile = []
+    if n_faq:
+        teile.append("%d häufige Fragen" % n_faq)
+    if n_spez:
+        teile.append("%d Spezialfälle" % n_spez)
+    return ('<p class="callout info">Automatisch aus den EEG-Faktura-WhatsApp-'
+            'Gruppen zusammengefasst (KI-kuratiert). Stand: %s · %s. '
+            'Quelle &amp; Pflege: <a href="%s">faq.unsere-eeg.at</a> '
+            '(<a href="%s">GitHub</a>). Diese Seite wird automatisch '
+            'überschrieben &mdash; Korrekturen bitte dort einbringen.</p>'
+            % (stamp, " und ".join(teile), FAQ_SITE, REPO_URL))
+
+
+def _entries_html(entries, with_count):
     out = []
-    out.append(
-        '<p class="callout info">Automatisch erstellte Zusammenfassung der '
-        'EEG-Faktura-WhatsApp-Gruppen (KI-kuratiert). Stand: %s · %d Einträge. '
-        'Quelle &amp; Pflege: <a href="%s">faq.unsere-eeg.at</a> '
-        '(<a href="%s">GitHub</a>). Diese Seite wird automatisch überschrieben '
-        '&mdash; Korrekturen bitte dort einbringen.</p>'
-        % (stamp, len(entries), FAQ_SITE, REPO_URL))
-    cat = None
-    for e in entries:  # faq_data.json ist kanonisch sortiert (Kategorie, count)
-        if e.get("kategorie") != cat:
-            cat = e.get("kategorie")
-            out.append("<h2>%s</h2>" % cat)
+    for e in entries:
         out.append("<h3>%s</h3>" % e["frage"])
         out.append(e["antwort"])
-        if section_label == "Häufige Fragen" and e.get("count", 1) >= 3:
+        if with_count and e.get("count", 1) >= 3:
             out.append("<p><em>In den Gruppen %d× gefragt.</em></p>" % e["count"])
+    return out
+
+
+def render_cat_page(faq, spez, stamp):
+    """Eine Kategorie-Seite: Häufige Fragen oben, Spezialfälle darunter."""
+    out = [_callout(stamp, len(faq), len(spez))]
+    if faq:
+        out.append("<h2>Häufige Fragen</h2>")
+        out += _entries_html(faq, with_count=True)
+    if spez:
+        out.append("<h2>Spezialfälle</h2>")
+        out.append("<p><em>Seltene, aber lehrreiche Einzelfälle aus den "
+                   "Gruppen &mdash; hilfreich, wenn die Standard-Antworten "
+                   "nicht weiterhelfen.</em></p>")
+        out += _entries_html(spez, with_count=False)
     return "\n".join(out)
 
 
 def build_pages(data, include_tool, stamp):
-    plan = [("portal", "faq", "EEG Faktura – Häufige Fragen (WhatsApp)", "Häufige Fragen"),
-            ("portal", "spezial", "EEG Faktura – Spezialfälle (WhatsApp)", "Spezialfälle")]
-    if include_tool:
-        plan += [("tool", "faq", "EEG Faktura Tool – Häufige Fragen (WhatsApp)", "Häufige Fragen"),
-                 ("tool", "spezial", "EEG Faktura Tool – Spezialfälle (WhatsApp)", "Spezialfälle")]
+    """Portal: eine Seite je Kategorie (Reihenfolge wie in faq_data.json,
+    'Sonstiges' zuletzt); Mini-Kategorien (<3 Einträge) → 'Sonstiges'."""
+    by_cat = {}
+    order = []
+    for sec in ("faq", "spezial"):
+        for e in data.get("portal", {}).get(sec, []):
+            cat = e.get("kategorie") or "Sonstiges"
+            if cat not in by_cat:
+                by_cat[cat] = {"faq": [], "spezial": []}
+                order.append(cat)
+            by_cat[cat][sec].append(e)
+    # Mini-Kategorien einfalten
+    for cat in [c for c in order if c != "Sonstiges"]:
+        n = len(by_cat[cat]["faq"]) + len(by_cat[cat]["spezial"])
+        if n < 3:
+            dst = by_cat.setdefault("Sonstiges", {"faq": [], "spezial": []})
+            if "Sonstiges" not in order:
+                order.append("Sonstiges")
+            dst["faq"] += by_cat[cat]["faq"]
+            dst["spezial"] += by_cat[cat]["spezial"]
+            order.remove(cat)
+            del by_cat[cat]
+    if "Sonstiges" in order:  # immer ans Ende
+        order.remove("Sonstiges")
+        order.append("Sonstiges")
+
     pages = []
-    for prod, sec, name, sec_label in plan:
-        entries = data.get(prod, {}).get(sec, [])
-        if not entries:
-            continue
-        pages.append({"key": "%s-%s" % (prod, sec), "name": name,
-                      "html": render_page(entries, sec_label, stamp)})
+    for cat in order:
+        pages.append({"key": "cat:" + cat, "name": cat,
+                      "html": render_cat_page(by_cat[cat]["faq"],
+                                              by_cat[cat]["spezial"], stamp)})
+    if include_tool:
+        t = data.get("tool", {})
+        pages.append({"key": "tool", "name": "EEG Faktura Tool (Desktop)",
+                      "html": render_cat_page(t.get("faq", []),
+                                              t.get("spezial", []), stamp)})
     return pages
 
 
@@ -235,7 +303,7 @@ def main():
     if dump:
         os.makedirs("/tmp/bookstack_pages", exist_ok=True)
         for p in pages:
-            fn = "/tmp/bookstack_pages/%s.html" % p["key"]
+            fn = "/tmp/bookstack_pages/%s.html" % re.sub(r"[^\wäöüÄÖÜß-]+", "_", p["key"])
             open(fn, "w").write("<h1>%s</h1>\n%s" % (p["name"], p["html"]))
             log("dump:", fn)
 
@@ -275,6 +343,26 @@ def main():
             state[p["key"]] = {"slug": slug, "hash": h}
             changed += 1
             log("   ->", "%s/books/%s/page/%s" % (sess.base, env["BOOKSTACK_BOOK"], slug))
+
+    # Verwaiste EIGENE Seiten (in state, nicht mehr im Plan) entfernen.
+    plan_keys = {p["key"] for p in pages}
+    existing_slugs = set(existing.values())
+    for key in [k for k in state if k not in plan_keys]:
+        slug = state[key].get("slug")
+        if not slug or slug not in existing_slugs:
+            if apply_mode:
+                del state[key]  # Seite gibt es nicht mehr
+            continue
+        if not apply_mode:
+            log("würde DELETE %s (nicht mehr im Plan)" % slug)
+            continue
+        if delete_page(sess, env, slug):
+            log("DELETE %s (nicht mehr im Plan)" % slug)
+            del state[key]
+        else:
+            log("WARNUNG: Löschen von %s fehlgeschlagen (fehlendes Delete-"
+                "Recht?) — bleibt im State, neuer Versuch beim nächsten Lauf."
+                % slug)
 
     if apply_mode:
         json.dump(state, open(STATE_FILE, "w"), indent=1)
