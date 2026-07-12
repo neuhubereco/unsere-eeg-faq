@@ -173,7 +173,7 @@
         "frage": "Wie kann ich meine Zaehlpunkte im Portal überprüfen?",
         "antwort": "<p>Zum Überprüfen Ihrer Zaehlpunkte melden Sie sich im Portal an, gehen zu <code>Mein Konto → Zaehlpunkte</code> und überprüfen Sie Ihre Punkte.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
-        "count": 1,
+        "count": 2,
         "added": "2026-07-05",
         "id": "2512bf8ea6b7d38a"
       },
@@ -656,6 +656,13 @@
         "id": "c578e07ba039d829"
       },
       {
+        "frage": "Warum wird die Mandatsreferenz im Stammdaten-Export nicht angezeigt?",
+        "antwort": "<p>Seit Juni 2025 wird die Mandatsreferenz im Export nur angezeigt, wenn SEPA beim Mitglied aktiviert und ausgefüllt ist. Als Mandatsreferenz kann einfach die Mitgliedsnummer eingetragen werden.</p>",
+        "kategorie": "Abrechnung",
+        "count": 2,
+        "id": "dcd7e21e65f1d78b"
+      },
+      {
         "frage": "Wie interpretiere ich rot/gelb/grau im QoV-Log des Energiedatenexports?",
         "antwort": "<ul><li><strong>Gelb</strong> = L2 (verrechenbar)</li><li><strong>Rot/Weiß</strong> = L3 (noch zu korrigieren, nicht abrechnen)</li><li><strong>Grau</strong> = ZP mit sowohl L0- als auch L2-Daten</li></ul><p>Die beiden roten Summenzeilen im Summary-Sheet zeigen die Gesamtmengen ohne Teilnahmefaktor; darunter folgt die Menge inkl. Faktor und die tatsächlich verteilte Menge.</p>",
         "kategorie": "Abrechnung",
@@ -696,13 +703,6 @@
         "kategorie": "Abrechnung",
         "count": 1,
         "id": "1acb269b209acbaa"
-      },
-      {
-        "frage": "Warum wird die Mandatsreferenz im Stammdaten-Export nicht angezeigt?",
-        "antwort": "<p>Seit Juni 2025 wird die Mandatsreferenz im Export nur angezeigt, wenn SEPA beim Mitglied aktiviert und ausgefüllt ist. Als Mandatsreferenz kann einfach die Mitgliedsnummer eingetragen werden.</p>",
-        "kategorie": "Abrechnung",
-        "count": 1,
-        "id": "dcd7e21e65f1d78b"
       },
       {
         "frage": "Wie erzeuge ich beim SEPA-Export Einzel- statt Sammelbuchungen?",
@@ -775,18 +775,18 @@
         "id": "5cf2ac10a433344c"
       },
       {
+        "frage": "Ist eine EEG/BEG gemeinnützig?",
+        "antwort": "<p><strong>Nein</strong>, laut Finanzamt und EAG §79 Abs. 2 sind weder EEG noch BEG gemeinnützig, da der Vereinszweck nicht im finanziellen Gewinn liegen darf. USt/Reverse Charge und KÖSt sind zu beachten; durch Tarifgestaltung lässt sich der Gewinn aber reduzieren.</p>",
+        "kategorie": "Steuer/USt",
+        "count": 2,
+        "id": "cc44fe41b491bceb"
+      },
+      {
         "frage": "Wie behandle ich pauschalierte vs. nicht pauschalierte Landwirte umsatzsteuerlich?",
         "antwort": "<p>Pauschalierte Landwirte bleiben immer bei 13%, unabhängig von der Anlagengröße. Nicht pauschalierte (buchhaltungspflichtige) Landwirte werden wie jede USt-pflichtige Firma behandelt (20%, vorsteuerabzugsberechtigt, Reverse Charge) und müssen eine UID bekanntgeben.</p>",
         "kategorie": "Steuer/USt",
         "count": 2,
         "id": "d3261911138e95fc"
-      },
-      {
-        "frage": "Ist eine EEG/BEG gemeinnützig?",
-        "antwort": "<p><strong>Nein</strong>, laut Finanzamt und EAG §79 Abs. 2 sind weder EEG noch BEG gemeinnützig, da der Vereinszweck nicht im finanziellen Gewinn liegen darf. USt/Reverse Charge und KÖSt sind zu beachten; durch Tarifgestaltung lässt sich der Gewinn aber reduzieren.</p>",
-        "kategorie": "Steuer/USt",
-        "count": 1,
-        "id": "cc44fe41b491bceb"
       },
       {
         "frage": "Muss eine Gemeinde-PV-Anlage USt verrechnen (hoheitlich vs. BgA)?",
@@ -915,6 +915,14 @@
         "id": "c08f17abc8ad8b2e"
       },
       {
+        "frage": "Wie kann ich den Teilnahmefaktor eines Mitglieds ändern, wenn es immer abgelehnt wird?",
+        "antwort": "<p>Änderungen werden nur zu gewissen Uhrzeiten zwischen 9 und 16 Uhr an Werktagen durchgeführt. Überprüfe, ob die 100%-Faktor nicht überschritten sind. Wenn du weiterhin Probleme hast, kontaktiere den Kundenservice.</p>",
+        "kategorie": "Bedienung",
+        "count": 1,
+        "added": "2026-07-12",
+        "id": "6475978e1f896c37"
+      },
+      {
         "frage": "Wie behelfe ich mir, wenn EEG Faktura keine neuen EEGs aufnimmt (Testen/Self-Hosting)?",
         "antwort": "<p>Die Aufnahme wird zeitweise pausiert, um den stabilen Betrieb zu sichern.</p><ul><li>Für Tests kann man eine eigene Instanz betreiben (offizielles Docker-Compose-Setup existiert, aber anspruchsvoll: Photon/PONTON, Keycloak)</li><li>oder bis zu 50 Zählpunkte direkt über das offizielle EDA-Portal starten.</li></ul><p>Um Zugang kann man formlos per E-Mail beim Betreiberteam ansuchen.</p>",
         "kategorie": "Installation/Updates",
@@ -954,6 +962,14 @@
         "id": "77e157bc1be7f626"
       },
       {
+        "frage": "Wie oft sollte ich die Zählpunktdaten nachfragen, wenn ich Differenzen feststelle?",
+        "antwort": "<p>Stellen Sie sicher, dass die Daten für die Zeiträume abgefragt werden, in denen das Mitglied Mitglied war. Jeder Zählpunkt muss mindestens zweimal nachgefragt werden.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-07-12",
+        "id": "93954d9110e95531"
+      },
+      {
         "frage": "Wie erzeuge ich SEPA-Datenträger mit dem Tool und was ist Pflicht?",
         "antwort": "<p>Erforderlich ist der eigene (EEG-)BIC in den Tool-Einstellungen und eine hinterlegte <strong>Creditor-ID</strong> (identisch in Faktura und Tool); der BIC der Mitglieder ist NICHT nötig. Mit aktivierter Option <code>SEPA-Mandat aus Import</code> übernimmt das Tool die Mandatsdaten direkt aus dem Import – eine separate Mandatsliste ist dann nicht nötig.</p>",
         "kategorie": "Abrechnung",
@@ -966,6 +982,14 @@
         "kategorie": "Abrechnung",
         "count": 1,
         "id": "5101fcab12e69815"
+      },
+      {
+        "frage": "Was tun, wenn im Dashboard eine Diskrepanz von 1000 kWh für ein Quartal festgestellt wird, ohne dass L3-Werte vorhanden sind?",
+        "antwort": "<p>Prüfen Sie, ob für den Zählpunkt ein Tarif gepflegt wurde. Laden Sie die Stammdatendatei herunter und filtern Sie nach ZP-Tarif. Wenn der Tarif nicht korrekt zugeordnet ist, korrigieren Sie dies.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-07-12",
+        "id": "2962284273abae7b"
       },
       {
         "frage": "Wie schließe ich Überweiser (kein SEPA) aus dem SEPA-Datenträger aus?",
