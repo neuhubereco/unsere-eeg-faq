@@ -79,6 +79,14 @@
         "id": "274fafa4504c26d3"
       },
       {
+        "frage": "Warum erscheint ein Mitglied in der Mitgliederliste, obwohl kein Dokument hochgeladen wurde?",
+        "antwort": "<p>Die Anmeldung eines Mitglieds ist abgeschlossen, wenn die Stammdaten korrekt eingegeben wurden. Das Dokument hochzuladen ist optional, aber empfohlen, um Vollständigkeit zu gewährleisten.</p>",
+        "kategorie": "Mitglieder",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "77f1c2e812e6af90"
+      },
+      {
         "frage": "Wie fordere ich fehlende Energiedaten an, wenn Summen nicht stimmen?",
         "antwort": "<p>Normalerweise kommen die Daten automatisch über PONTON/EDA. Fehlen sie, über <code>Prozesse → Zählpunktdaten nachfordern</code> anstoßen – am besten pro Zählpunkt bzw. tageweise, da Sammelanforderungen über mehrere Monate oft unvollständig sind und neu hinzugekommene ZP ignorieren. Als Startdatum immer das <strong>exakte Aktivierungsdatum</strong> des ZP verwenden.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
@@ -178,10 +186,18 @@
         "id": "2512bf8ea6b7d38a"
       },
       {
+        "frage": "Wie kann ich den Jahresverbrauch eines Teilnehmers in EEG Faktura ansehen?",
+        "antwort": "<p>Verwenden Sie den Zählpunkt im Portal, um die 12 Monatswerte zu zusammenzählen und den Jahresverbrauch anzusehen.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "5626f3d6f0bf493c"
+      },
+      {
         "frage": "Was bedeuten die Datenqualitäts-Stufen L0/L1/L2/L3 im Energiedatenreport?",
         "antwort": "<ul><li>L0 = keine Daten vorhanden</li><li>L1 = gültige Echtwerte</li><li>L2 = Ersatzwert (zur Abrechnung geeignet, meist gelb)</li><li>L3 = Ersatzwert <strong>nicht</strong> zur Abrechnung geeignet (rot)</li></ul><p>Für eine saubere Abrechnung sollten keine L0/L3-Werte mehr vorhanden sein – vorher gezielt nachfordern.</p>",
         "kategorie": "Abrechnung",
-        "count": 6,
+        "count": 7,
         "id": "940a4fa3f15f23da"
       },
       {
@@ -507,6 +523,14 @@
         "kategorie": "Mitglieder",
         "count": 1,
         "id": "4a3a1a155e449507"
+      },
+      {
+        "frage": "Wo kann ich die Stammdaten korrigieren, wenn sie nicht korrekt angezeigt werden?",
+        "antwort": "<p>Sie können die Stammdaten über <code>Prozesse → Teilnehmerfaktor ändern</code> korrigieren. Bitte beachten Sie, dass dies nur Mo-Fr von 09:00 bis 16:00 Uhr durchgeführt werden kann.</p>",
+        "kategorie": "Mitglieder",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "48f30a57c91c4f22"
       },
       {
         "frage": "Zwei Mitglieder haben dieselbe Zählpunktnummer angegeben – was tun?",
@@ -1083,6 +1107,22 @@
         "id": "a31e0716d405d7ec"
       },
       {
+        "frage": "Kann die Software auch am Mac benutzen?",
+        "antwort": "<p>Nein, die Software ist derzeit nur für Windows verfügbar.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "3d354b1f17218fe2"
+      },
+      {
+        "frage": "Kann ich XML-Dateien, die durch Sepa Sammelbuchungen generiert werden, behalten?",
+        "antwort": "<p>Kannst du behalten, wird nichts beschädigt. Falls Zweifel bestehen, lösche sie und überprüfe die Anleitung.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "b4b2fb5d039465c7"
+      },
+      {
         "frage": "Läuft das EEG Faktura Tool auf macOS?",
         "antwort": "<p>Nein, das Tool benötigt <strong>Windows</strong>. Auf dem Mac funktioniert es über eine Windows-Virtualisierung wie Parallels.</p>",
         "kategorie": "Installation/Updates",
@@ -1146,6 +1186,14 @@
         "kategorie": "Abrechnung",
         "count": 2,
         "id": "384f034fb736fb09"
+      },
+      {
+        "frage": "Warum wird keine Rechnung erstellt, wenn der Zählpunkt nicht aktiv ist, obwohl der Mitgliedstarif zugeordnet ist?",
+        "antwort": "<ol><li>Stellen Sie sicher, dass der Zählpunkt aktiv ist.</li><li>Wenden Sie sich an den Netzbetreiber, um die Zugehörigkeit des Zählpunkts zu überprüfen.</li></ol>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-07-19",
+        "id": "a61dd6a056c5466f"
       },
       {
         "frage": "Beim 'Nein' auf die Sicherheitsabfrage beim Massen-Mailversand wird das Grid geleert.",
