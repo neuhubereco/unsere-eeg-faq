@@ -186,12 +186,28 @@
         "id": "2512bf8ea6b7d38a"
       },
       {
+        "frage": "Frage habe letzte Woche einen neuen Zählpunkt bekommen für Ladestation, ist wahrscheinlich noch nicht freigeschalten soll ich abwarten oder Löschen und neu registrieren oder wie weis ich wenn er freigeschalten ist.",
+        "antwort": "<p>Warten Sie ab, ob der Zählpunkt freigeschaltet wird. Sie können später aktiviert werden. Falls Sie sich sicher sind, dass der Zählpunkt nicht aktiviert wird, kontaktieren Sie den Netzbetreiber.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "0e35ebd0a7213521"
+      },
+      {
         "frage": "Wie kann ich den Jahresverbrauch eines Teilnehmers in EEG Faktura ansehen?",
         "antwort": "<p>Verwenden Sie den Zählpunkt im Portal, um die 12 Monatswerte zu zusammenzählen und den Jahresverbrauch anzusehen.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
         "count": 1,
         "added": "2026-07-19",
         "id": "5626f3d6f0bf493c"
+      },
+      {
+        "frage": "Wie kann ich Zählpunkte einem Mitglied zuweisen, wenn ich mehr als 2 Zählpunkte habe?",
+        "antwort": "<p>Wählen Sie den Zählpunkt und klicken Sie auf das Verschiebzeichen. Dies ermöglicht die Zuweisung von Zählpunkten zu einem Mitglied.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "85a3e7e2c6a27570"
       },
       {
         "frage": "Was bedeuten die Datenqualitäts-Stufen L0/L1/L2/L3 im Energiedatenreport?",
@@ -376,18 +392,18 @@
         "id": "bae474adc78ea51c"
       },
       {
+        "frage": "Wo finde ich Handbuch, Netzbetreiber-Infos und Kontaktadressen?",
+        "antwort": "<p>Handbuch und Anleitungen unter docs.eegfaktura.at (u.a. Abrechnung, Netzbetreiber-Infos, Stammdaten-Import). Netzbetreiber-Kontaktadressen unter energiegemeinschaften.gv.at/austausch-netzbetreiber/, Netzbetreiber-IDs über smartmeter-portal.at. Ein Video-Tutorial ist nicht bekannt.</p>",
+        "kategorie": "Bedienung",
+        "count": 5,
+        "id": "6f76544d80ee2658"
+      },
+      {
         "frage": "Bietet EEG Faktura eine API?",
         "antwort": "<p>Ja (dokumentiert unter eegfaktura.gitbook.io). Der Token wird per client_credentials-Flow vom Keycloak geholt (Client-ID im HTTP-Header, nicht im Body), ist nur ca. <strong>5 Minuten gültig</strong> und muss erneuert werden. Bei der SaaS-Version muss das aufrufende System vorab beim EEGFaktura-Keycloak als Client registriert sein (per Ticket).</p>",
         "kategorie": "Bedienung",
         "count": 4,
         "id": "c2ad6411305e56e2"
-      },
-      {
-        "frage": "Wo finde ich Handbuch, Netzbetreiber-Infos und Kontaktadressen?",
-        "antwort": "<p>Handbuch und Anleitungen unter docs.eegfaktura.at (u.a. Abrechnung, Netzbetreiber-Infos, Stammdaten-Import). Netzbetreiber-Kontaktadressen unter energiegemeinschaften.gv.at/austausch-netzbetreiber/, Netzbetreiber-IDs über smartmeter-portal.at. Ein Video-Tutorial ist nicht bekannt.</p>",
-        "kategorie": "Bedienung",
-        "count": 4,
-        "id": "6f76544d80ee2658"
       },
       {
         "frage": "Warum steht das Dashboard zum Quartals-/Monatswechsel plötzlich auf 0?",
@@ -715,6 +731,14 @@
         "id": "0f2171b89bcd1482"
       },
       {
+        "frage": "Kann ich den Teilnahmefaktor im Info-Mail für den jeweiligen Zählpunkt mit angeben?",
+        "antwort": "<p>Derzeit ist es nicht möglich, den Teilnahmefaktor im Info-Mail anzuzeigen. Wir arbeiten daran, diese Funktion hinzuzufügen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "e65bfd885f5cb299"
+      },
+      {
         "frage": "Sollte ich abrechnen, wenn noch L3-Werte bestehen?",
         "antwort": "<p>Grundsätzlich <strong>nicht</strong> mit reinen L3-Werten abrechnen, da noch signifikante Mengen fehlen können (Beispiel: 3.000 kWh eines Wasserkraftwerks nicht eingerechnet). Erfahrungswerte gehen auseinander; im Zweifel abwarten und erneut nachfordern.</p>",
         "kategorie": "Abrechnung",
@@ -888,6 +912,14 @@
         "kategorie": "Fehler/Störung",
         "count": 1,
         "id": "52e6f4c0bf913706"
+      },
+      {
+        "frage": "Warum kann ich nicht mehr als 20 Mails an Mitglieder versenden?",
+        "antwort": "<p>Das ist ein vorgegebener Parameter und kann derzeit nicht angepasst werden. Falls Sie mehr als 20 Mails versenden müssen, kontaktieren Sie bitte den Support.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "77f983c2023114fc"
       },
       {
         "frage": "Kann der Teilnahmefaktor über die API geändert werden?",
@@ -1105,6 +1137,14 @@
         "kategorie": "Installation/Updates",
         "count": 3,
         "id": "a31e0716d405d7ec"
+      },
+      {
+        "frage": "Es gibt mehrere Versionen des Stromregion.at EEG Faktura Tools, welche ist aktuell die aktuellste?",
+        "antwort": "<p>Die aktuellste Version ist 2.x. Sie finden den Downloadlink <a href=\"https://stromregion.at/eeg-faktura-tool/\">hier</a>.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "ee84d681feba4138"
       },
       {
         "frage": "Kann die Software auch am Mac benutzen?",
