@@ -392,6 +392,14 @@
         "id": "bae474adc78ea51c"
       },
       {
+        "frage": "Warum werden manuell angestoßene Nachforderungen von Energiedaten erst am nächsten Arbeitstag bearbeitet?",
+        "antwort": "<p>Manuell angestoßene Nachforderungen werden aktuell erst am nächsten Arbeitstag bearbeitet. Dies betrifft derzeit alle Netzbetreiber, einschließlich NetzOÖ.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-08-02",
+        "id": "f3c9a82c6a2b82d1"
+      },
+      {
         "frage": "Wo finde ich Handbuch, Netzbetreiber-Infos und Kontaktadressen?",
         "antwort": "<p>Handbuch und Anleitungen unter docs.eegfaktura.at (u.a. Abrechnung, Netzbetreiber-Infos, Stammdaten-Import). Netzbetreiber-Kontaktadressen unter energiegemeinschaften.gv.at/austausch-netzbetreiber/, Netzbetreiber-IDs über smartmeter-portal.at. Ein Video-Tutorial ist nicht bekannt.</p>",
         "kategorie": "Bedienung",
@@ -1031,6 +1039,14 @@
         "kategorie": "Abrechnung",
         "count": 3,
         "id": "16ba204d23709f29"
+      },
+      {
+        "frage": "Gibt es Probleme falls mit dem Tool SEPA-Datenträger erstellt werden? Beim Einzug werden sowohl CORE als auch B2B verwendet. Die Verarbeitung mit Georg funktioniert auf Grund der Identen Abschnittsnummern, Core und B2B, jedoch nicht.",
+        "antwort": "<p>Ja, Hypo vergleicht nur die 16 ersten Stellen der BIC. Sollten 2 Sammelbuchungen ident sein, kann dies zu Problemen führen, da Hypo die 15 ersten Stellen vergleicht und egal Zählpunkte in den Daten enthalten sind.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-08-02",
+        "id": "1d5ecc35b1f59a12"
       },
       {
         "frage": "SEPA-Import in die Banksoftware (ELBA/Infinity/George) schlägt fehl – was prüfen?",
