@@ -371,6 +371,13 @@
         "id": "1916af658f37059a"
       },
       {
+        "frage": "Nach dem Serverumzug funktioniert der Login nicht – bekannt?",
+        "antwort": "<p>Ja, während der angekündigten Server-/Datenübersiedlung war der Login zeitweise für alle Nutzer nicht möglich und wurde vom Betreiber nach und nach wieder in Betrieb genommen (Status-Updates in der Gruppe).</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 2,
+        "id": "bae474adc78ea51c"
+      },
+      {
         "frage": "Warum ergibt sich bei Ein- = Verkaufspreis (0-Gewinn-EEG) trotzdem eine kleine Differenz?",
         "antwort": "<p>Das liegt an unvermeidbaren L2-Ersatzwerten in den Netzbetreiberdaten; eine exakte Punktlandung auf 0 ist selten. Kleine Restdifferenzen (oft 0,02–0,2 % pro Quartal) sind normal, netzbetreiberabhängig und werden meist von Monat zu Monat kleiner.</p>",
         "kategorie": "Fehler/Störung",
@@ -383,13 +390,6 @@
         "kategorie": "Fehler/Störung",
         "count": 2,
         "id": "d043b19edab9ca0e"
-      },
-      {
-        "frage": "Nach dem Serverumzug funktioniert der Login nicht – bekannt?",
-        "antwort": "<p>Ja, während der angekündigten Server-/Datenübersiedlung war der Login zeitweise für alle Nutzer nicht möglich und wurde vom Betreiber nach und nach wieder in Betrieb genommen (Status-Updates in der Gruppe).</p>",
-        "kategorie": "Fehler/Störung",
-        "count": 1,
-        "id": "bae474adc78ea51c"
       },
       {
         "frage": "Warum werden manuell angestoßene Nachforderungen von Energiedaten erst am nächsten Arbeitstag bearbeitet?",
@@ -1106,18 +1106,18 @@
         "id": "3113fa154a277dba"
       },
       {
+        "frage": "Rechnungsnummer wird beim Import als Fehler gemeldet, obwohl sie korrekt aussieht.",
+        "antwort": "<p>Meist ist das Feld in Excel als Zahl statt als Text formatiert. Abhilfe: ein Präfix wie <code>RE</code> oder <code>GU</code> vor die Rechnungsnummer stellen, dann wandelt Excel die Zelle automatisch in Text um.</p>",
+        "kategorie": "Bedienung",
+        "count": 2,
+        "id": "0c4a168b4aa7cdfb"
+      },
+      {
         "frage": "Wie finde ich im Pivot fehlerhafte/inkonsistente Tage und werte Verbrauch aus?",
         "antwort": "<p>Das Datum in die Y-Achse ziehen: Pro Tag muss die Summe von Verbrauch und Einspeisung 0 ergeben (gegengleich) – abweichende Tage zeigen den Fehler. Zellen ohne Werte farblich hervorheben; für Monats-/Jahressummen die Spalte <code>Monat</code> bzw. <code>Jahr</code> vorne einfügen.</p>",
         "kategorie": "Bedienung",
         "count": 2,
         "id": "73db69f755c5f334"
-      },
-      {
-        "frage": "Rechnungsnummer wird beim Import als Fehler gemeldet, obwohl sie korrekt aussieht.",
-        "antwort": "<p>Meist ist das Feld in Excel als Zahl statt als Text formatiert. Abhilfe: ein Präfix wie <code>RE</code> oder <code>GU</code> vor die Rechnungsnummer stellen, dann wandelt Excel die Zelle automatisch in Text um.</p>",
-        "kategorie": "Bedienung",
-        "count": 1,
-        "id": "0c4a168b4aa7cdfb"
       },
       {
         "frage": "Was bedeutet 'Maximale Anzahl Mails pro Sendevorgang = 0'?",
