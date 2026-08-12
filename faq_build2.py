@@ -41,6 +41,7 @@ tot = len(d["portal"]["faq"])+len(d["portal"]["spezial"])+len(d["tool"]["faq"])+
 
 HTML=f"""<!doctype html><html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="ai-disclosure" content="KI-generierte Inhalte: automatisch aus Community-Chats zusammengefasst, laufend mit lokaler KI (on-premise) aktualisiert">
 <title>EEG Faktura – Häufige Fragen</title>
 <script defer data-domain="faq.unsere-eeg.at" src="https://stats.solavia.at/js/script.js"></script>
 <style>
