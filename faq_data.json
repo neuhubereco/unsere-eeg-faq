@@ -30,6 +30,14 @@
         "id": "1092fcf496d3b5ab"
       },
       {
+        "frage": "Beim Einstieg in die EEG Faktura nach Eingabe, Benutzer und Passwort läuft lediglich ewig die Sanduhr. Funktioniert der Einstieg bei Euch ?",
+        "antwort": "<p>Ja, bei uns funktioniert der Einstieg in die EEG Faktura ohne Probleme.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-08-16",
+        "id": "277314c0473c3303"
+      },
+      {
         "frage": "Wie melde ich ein Mitglied korrekt an, damit ein Freigabeprozess beim Netzbetreiber ausgelöst wird?",
         "antwort": "<ol><li>Mitgliederdaten/Tarif eingeben</li><li>Zählpunkt hinzufügen</li><li><code>Registrieren</code></li><li><code>Mitglied zulassen</code></li></ol><p>Wird der letzte Schritt übersehen, geht kein Prozess raus. Bleibt der Button grün/inaktiv, alle Pflichtfelder prüfen (ZP-Nummer 33-stellig, Teilnahmefaktor, Bankverbindung, Mandatsdatum per Kalender ausgewählt).</p>",
         "kategorie": "Mitglieder",
@@ -200,6 +208,14 @@
         "count": 1,
         "added": "2026-07-19",
         "id": "5626f3d6f0bf493c"
+      },
+      {
+        "frage": "Wie kann ich einen Zählpunkt, bei dem die Netzfreigabe abgelaufen ist, wieder freischalten?",
+        "antwort": "<p><strong>Prüfen Sie zunächst die History des Zählpunkts.</strong> Wenn keine Infos vorhanden sind, kontaktieren Sie den Netzbetreiber, da die Freigabe abgelaufen sein könnte. In diesem Fall muss der Stromanbieter die Freigabe erneut aktivieren.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-08-16",
+        "id": "00b77f5a75f261c6"
       },
       {
         "frage": "Wie kann ich Zählpunkte einem Mitglied zuweisen, wenn ich mehr als 2 Zählpunkte habe?",
