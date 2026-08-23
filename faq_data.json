@@ -303,6 +303,14 @@
         "id": "a2ebaf2f51221751"
       },
       {
+        "frage": "Haben andere Betreiber auch L2-Daten von Netz OÖ erhalten?",
+        "antwort": "<p>Ja, es gibt ähnliche Erfahrungen bei anderen Betreibern.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-08-23",
+        "id": "79df8350e0404ce1"
+      },
+      {
         "frage": "Kann man an mehrere E-Mail-Adressen eines Mitglieds Rechnungen senden?",
         "antwort": "<p>Ja, mehrere Adressen im E-Mail-Feld mit Strichpunkt (;) ohne Leerzeichen danach trennen.</p>",
         "kategorie": "Abrechnung",
@@ -322,6 +330,14 @@
         "kategorie": "Tarife",
         "count": 3,
         "id": "9fd20d024b561eac"
+      },
+      {
+        "frage": "Wie sind die Tarife für Mitglieder?",
+        "antwort": "<p>Die Tarife liegen bei etwa 10-14,5 ct/kWh netto, abhängig vom Verbrauch. Es gibt auch eine Grundgebühr von 5,28 € pro Monat.</p>",
+        "kategorie": "Tarife",
+        "count": 1,
+        "added": "2026-08-23",
+        "id": "56dbade0d3719aeb"
       },
       {
         "frage": "Wie richte ich USt-Ausweis / Vorsteuerabzug in EEG Faktura ein?",
@@ -1055,6 +1071,14 @@
         "kategorie": "Abrechnung",
         "count": 3,
         "id": "16ba204d23709f29"
+      },
+      {
+        "frage": "an wen soll ich mich wenden wenn ich eine Frage zur Magre die mir die EEG Faktura ausrechnet habe?",
+        "antwort": "<p>Wenden Sie sich an den Kundenservice von <code>stromregion.at</code>.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-08-23",
+        "id": "b813718d201363ca"
       },
       {
         "frage": "Gibt es Probleme falls mit dem Tool SEPA-Datenträger erstellt werden? Beim Einzug werden sowohl CORE als auch B2B verwendet. Die Verarbeitung mit Georg funktioniert auf Grund der Identen Abschnittsnummern, Core und B2B, jedoch nicht.",
