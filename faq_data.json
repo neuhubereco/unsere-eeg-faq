@@ -318,6 +318,14 @@
         "id": "b10ca4f33ef1fdc3"
       },
       {
+        "frage": "KEP Server steht, kann das EEG-Faktura beeinträchtigen?",
+        "antwort": "<p>Ja, ein gestopfter KEP Server kann EEG-Faktura verlangsamen. Überprüfen Sie den Serverstatus oder kontaktieren Sie den Betreiber.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-08-30",
+        "id": "21a2d4af408f01e9"
+      },
+      {
         "frage": "Wie ändere ich den Teilnahmefaktor eines Mitglieds und warum kommt 'Prozessdatum falsch'?",
         "antwort": "<p>Der Teilnahmefaktor kann nur <strong>werktags ca. 9–16 Uhr</strong> geändert werden (sonst <code>Prozessdatum falsch</code>), gilt ab dem nächsten Kalendertag und lässt sich nur reduzieren, wenn der ZP bereits vom Netzbetreiber angenommen wurde (Minimum 1%). Bei Teilnahme an mehreren EEGs zuerst in der einen reduzieren, am Folgetag in der anderen erhöhen.</p>",
         "kategorie": "Tarife",
@@ -330,6 +338,14 @@
         "kategorie": "Tarife",
         "count": 3,
         "id": "9fd20d024b561eac"
+      },
+      {
+        "frage": "Wie kann ich eine einmalige Eintrittsgebühr für einen neuen Tarif anlegen?",
+        "antwort": "<p>Verwenden Sie stattdessen den Begriff <strong>Einschreibung</strong>. Dies wird korrekt verrechnet.</p>",
+        "kategorie": "Tarife",
+        "count": 1,
+        "added": "2026-08-30",
+        "id": "764a13a5d80c0a02"
       },
       {
         "frage": "Wie sind die Tarife für Mitglieder?",
@@ -502,6 +518,14 @@
         "kategorie": "Einrichtung",
         "count": 1,
         "id": "94ae04da9678f50f"
+      },
+      {
+        "frage": "Warum wird der 'Registrierungs' Button grau und nicht grün, obwohl alle Felder ausgefüllt sind?",
+        "antwort": "<p>Stellen Sie sicher, dass das Datumsfeld korrekt ausgewählt ist und das Kästchen 'Adresse vom Besitzer übernehmen' aktiviert ist. Wenn das Problem persistiert, klicken Sie das Feld 'Wechselrichter anlegen' an, um den Button zu aktivieren.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-08-30",
+        "id": "93a9fbd068d582d4"
       },
       {
         "frage": "Warum liegt die vorgeschlagene Mitgliedsnummer höher als die erste freie / neue Mitglieder erscheinen nicht in Reihenfolge?",
