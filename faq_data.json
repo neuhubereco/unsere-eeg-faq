@@ -95,6 +95,14 @@
         "id": "77f1c2e812e6af90"
       },
       {
+        "frage": "Wie kann ich den Teilnahmfaktor auf 0 stellen oder eine Mitgliedschaft beenden?",
+        "antwort": "<p><strong>TNF 0 geht nicht, mindestens 1 einstellen. Mitgliedschaft beenden geht über Prozesse-Menü + Zählpunkt abmelden.</strong></p><p>Wenn es weiter Probleme gibt, schreibe bitte ein Ticket.</p>",
+        "kategorie": "Mitglieder",
+        "count": 1,
+        "added": "2026-09-06",
+        "id": "b4192b0abaff2020"
+      },
+      {
         "frage": "Wie fordere ich fehlende Energiedaten an, wenn Summen nicht stimmen?",
         "antwort": "<p>Normalerweise kommen die Daten automatisch über PONTON/EDA. Fehlen sie, über <code>Prozesse → Zählpunktdaten nachfordern</code> anstoßen – am besten pro Zählpunkt bzw. tageweise, da Sammelanforderungen über mehrere Monate oft unvollständig sind und neu hinzugekommene ZP ignorieren. Als Startdatum immer das <strong>exakte Aktivierungsdatum</strong> des ZP verwenden.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
@@ -324,6 +332,22 @@
         "count": 1,
         "added": "2026-08-30",
         "id": "21a2d4af408f01e9"
+      },
+      {
+        "frage": "USt-Button aktiv wird nur nach Klicken.",
+        "antwort": "<p><strong>Prozesse → Abrechnung:</strong> Stellen Sie sicher, dass alle Felder korrekt ausgefüllt sind. Klicken Sie gezielt auf den USt-Button, um den Status zu aktualisieren.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-06",
+        "id": "abd66cfa8d088058"
+      },
+      {
+        "frage": "Wird immer die Daten von allen Mitgliedern abgerufen, egal welches Mitglied markiert ist?",
+        "antwort": "<p>Stelle sicher, dass das inaktive Mitglied ausgewählt wird, bevor du die Vorschau abrufst. Andernfalls werden alle Daten abgerufen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-06",
+        "id": "073c25d5ec216a90"
       },
       {
         "frage": "Wie ändere ich den Teilnahmefaktor eines Mitglieds und warum kommt 'Prozessdatum falsch'?",
@@ -822,6 +846,14 @@
         "kategorie": "Abrechnung",
         "count": 1,
         "id": "44f5232fc4e3e9fe"
+      },
+      {
+        "frage": "Wie kann ich Rechnungen, die bereits erstellt wurden, neu erstellen?",
+        "antwort": "<p>Rechnungen, die bereits erstellt wurden, können leider nicht neu erstellt werden. Du musst ein Ticket erstellen, damit ein Admin das zurück setzt.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-06",
+        "id": "f4c30556757a2723"
       },
       {
         "frage": "Wie stelle ich eine ordentliche Rechnung (mit Belegnummer) statt eines Informationsbelegs für gewerbliche Einspeiser aus?",
