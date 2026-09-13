@@ -311,6 +311,14 @@
         "id": "a2ebaf2f51221751"
       },
       {
+        "frage": "Gibt es bereits eine Zeitschiene oder Planung für die Bereitstellung von EEG Faktura Daten?",
+        "antwort": "<p>Leider kann zurzeit keine genaue Zeitschiene gegeben werden. Dies wird bei der nächsten Mitgliederversammlung besprochen werden.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-13",
+        "id": "4def8dde87a26e44"
+      },
+      {
         "frage": "Haben andere Betreiber auch L2-Daten von Netz OÖ erhalten?",
         "antwort": "<p>Ja, es gibt ähnliche Erfahrungen bei anderen Betreibern.</p>",
         "kategorie": "Abrechnung",
@@ -462,6 +470,14 @@
         "kategorie": "Fehler/Störung",
         "count": 2,
         "id": "d043b19edab9ca0e"
+      },
+      {
+        "frage": "Netzbetreiber-ID-Fehler passiert, erledigt sich das von selbst oder muss ein Ticket erstellt werden?",
+        "antwort": "<p><strong>Wenn der Fehler sich nicht von allein löst, sollte ein Ticket erstellt werden.</strong></p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-09-13",
+        "id": "58d81f5214ce5f5a"
       },
       {
         "frage": "Warum werden manuell angestoßene Nachforderungen von Energiedaten erst am nächsten Arbeitstag bearbeitet?",
@@ -1135,6 +1151,14 @@
         "count": 1,
         "added": "2026-08-23",
         "id": "b813718d201363ca"
+      },
+      {
+        "frage": "Gibt es eine Vorlage für die Anzeige/Auswertung des größten 1/4h Wertes mit und ohne Energiegemeinschaft?",
+        "antwort": "<p>Ja, die Energiedatenexport-Funktion von EEG Faktura und Excel eignet sich gut. Alle 1/4 Stundenwerte sind vorhanden und pro Zählpunkt 3 Spalten (erste und letzte interessant) mit Filtern.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-13",
+        "id": "6f0d72165ccd57be"
       },
       {
         "frage": "Gibt es Probleme falls mit dem Tool SEPA-Datenträger erstellt werden? Beim Einzug werden sowohl CORE als auch B2B verwendet. Die Verarbeitung mit Georg funktioniert auf Grund der Identen Abschnittsnummern, Core und B2B, jedoch nicht.",
