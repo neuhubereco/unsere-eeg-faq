@@ -210,6 +210,14 @@
         "id": "0e35ebd0a7213521"
       },
       {
+        "frage": "Wann werden Zählpunkte aktualisiert?",
+        "antwort": "<p>Werte > 0 kWh wurden an den Tagen angezeigt, nach Umstellung in Faktura.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-09-20",
+        "id": "668a235d54c82356"
+      },
+      {
         "frage": "Wie kann ich den Jahresverbrauch eines Teilnehmers in EEG Faktura ansehen?",
         "antwort": "<p>Verwenden Sie den Zählpunkt im Portal, um die 12 Monatswerte zu zusammenzählen und den Jahresverbrauch anzusehen.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
@@ -1252,6 +1260,14 @@
         "kategorie": "Bedienung",
         "count": 1,
         "id": "d34a142c0dc77937"
+      },
+      {
+        "frage": "Wie schwierig ist es das Tool zu meistern?",
+        "antwort": "<p>Start ist üblicherweise nach Einrichtung mit Tarifen und anschließend Mitglieder. Doku hilft beim ersten Einlesen.</p>",
+        "kategorie": "Bedienung",
+        "count": 1,
+        "added": "2026-09-20",
+        "id": "1b8f03faed6fb384"
       },
       {
         "frage": "Wo müssen Pivot-Vorlagen abgelegt werden?",
