@@ -38,6 +38,14 @@
         "id": "277314c0473c3303"
       },
       {
+        "frage": "Muss man einen zweiten Verein gründen, wenn man beim selben Netzbetreiber, jedoch anderes Umspannwerk, eine neue regionale EEG gründen will?",
+        "antwort": "<p>Nein, es reicht, die Regionale EEG zu ändern. EEG Faktura kann einem User mehrere EEGs zuordnen.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-09-27",
+        "id": "f3e0b0b2a5d08f3e"
+      },
+      {
         "frage": "Wie melde ich ein Mitglied korrekt an, damit ein Freigabeprozess beim Netzbetreiber ausgelöst wird?",
         "antwort": "<ol><li>Mitgliederdaten/Tarif eingeben</li><li>Zählpunkt hinzufügen</li><li><code>Registrieren</code></li><li><code>Mitglied zulassen</code></li></ol><p>Wird der letzte Schritt übersehen, geht kein Prozess raus. Bleibt der Button grün/inaktiv, alle Pflichtfelder prüfen (ZP-Nummer 33-stellig, Teilnahmefaktor, Bankverbindung, Mandatsdatum per Kalender ausgewählt).</p>",
         "kategorie": "Mitglieder",
@@ -358,6 +366,22 @@
         "id": "abd66cfa8d088058"
       },
       {
+        "frage": "Warum werden zwei Kunden im HTML-Export für die Bank zusammengefasst, obwohl sie nichts gemeinsam haben?",
+        "antwort": "<p>Vermutlich haben die beiden Kunden die gleiche Mitgliedsnummer. Dies ist der Schlüssel für das Zusammenfassen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-27",
+        "id": "cea36c5afc62e0a2"
+      },
+      {
+        "frage": "Wie handelt man mit Mitgliedern, die das Wahlrecht zwischen monatlicher und jährlicher Abrechnung nutzen wollen?",
+        "antwort": "<p><strong>Haftungsausschluss:</strong> Es ist wichtig, dass das Wahlrecht zwischen monatlicher und jährlicher Abrechnung laut ElWG respektiert wird. Bei Mitgliedern, die das Wahlrecht nutzen wollen, sollte zunächst versucht werden, diese in die übliche Vorgehensweise einzubeziehen. Falls dies nicht möglich ist, könnte ein Vorstandbeschluss zur Ausweisung solcher Mitglieder in Betracht gezogen werden, da die Einrichtung des Anrechts auf Mitgliedschaft in Österreich nicht vorgesehen ist.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-09-27",
+        "id": "749f9eaf361a2df3"
+      },
+      {
         "frage": "Wird immer die Daten von allen Mitgliedern abgerufen, egal welches Mitglied markiert ist?",
         "antwort": "<p>Stelle sicher, dass das inaktive Mitglied ausgewählt wird, bevor du die Vorschau abrufst. Andernfalls werden alle Daten abgerufen.</p>",
         "kategorie": "Abrechnung",
@@ -557,7 +581,7 @@
         "frage": "Wie funktioniert die Struktur Hauptverein mit Zweigvereinen?",
         "antwort": "<p>Der Zweigverein wird als separate EEG mit eigener GemeinschaftsID angelegt; im Zugang kann man zwischen den EEGs wechseln. Rechnungen müssen über den jeweiligen Zweigverein laufen (der Dachverein höchstens als Inkassodienstleister). Ob dieselbe Steuernummer erlaubt ist, beurteilen Finanzämter/Banken uneinheitlich.</p>",
         "kategorie": "Einrichtung",
-        "count": 2,
+        "count": 3,
         "id": "bbc07ebecd77e592"
       },
       {
@@ -1040,6 +1064,14 @@
         "count": 1,
         "added": "2026-07-26",
         "id": "77f983c2023114fc"
+      },
+      {
+        "frage": "Was ist das Problem bei der Neuanmeldung, wenn in Process History 'Anmeldung Teilnahme Online' nichts auftritt?",
+        "antwort": "<p>Es scheint, dass der KEP Server Probleme hat. Überprüfen Sie die Serverstatus oder kontaktieren Sie den Support.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-09-27",
+        "id": "fea651ec00519e61"
       },
       {
         "frage": "Kann der Teilnahmefaktor über die API geändert werden?",
