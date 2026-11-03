@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # /root/faq/faq_update.py — woechentliche FAQ-Aktualisierung aus den EEG-WhatsApp-Gruppen.
-# Alles ON-PREMISE: Extraktion qwen2.5:7b + Dedup via nomic-embed (ollama-maria :11460).
+# Alles ON-PREMISE: Extraktion qwen2.5:14b + Dedup via nomic-embed (Ollama in CT207 :11460).
 # Neue Fragen -> neuer Eintrag; bekannte Fragen -> count+1. Danach Rebuild + Deploy auf CT173.
-import json, subprocess, urllib.request, datetime, sys, os, re, math, hashlib
+import json, subprocess, datetime, sys, os, re, math, hashlib
 
 BASE="/root/faq"; DB="/opt/wa-maria/data/florian.db"
-OLLAMA="http://127.0.0.1:11460"
-GEN="qwen2.5:7b"; EMBM="nomic-embed-text"
+# Ollama liegt seit 18.10.2026 in CT207, der Port ist vom Host aus gesperrt -> pct exec + curl, Payload per stdin.
+OLLAMA_CT="207"; OLLAMA="http://127.0.0.1:11460"
+GEN="qwen2.5:14b"; EMBM="nomic-embed-text"
 DRY="--dry-run" in sys.argv
 CHUNK=60; SIM_THRESH=0.86; MIN_RAM_GB=10
 GROUPS={  # name: (chat_id, produkt-prior)
@@ -34,12 +35,16 @@ def fetch(cid, since):
     try: return json.loads(p.stdout or "[]")
     except: return []
 
-def api(path,payload,timeout=300):
-    req=urllib.request.Request(OLLAMA+path,data=json.dumps(payload).encode(),headers={"content-type":"application/json"})
-    return json.loads(urllib.request.urlopen(req,timeout=timeout).read())
+def api(path,payload,timeout=900):
+    p=subprocess.run(["pct","exec",OLLAMA_CT,"--","curl","-sS","--fail-with-body","--max-time",str(timeout),
+                      "-H","content-type: application/json","--data-binary","@-",OLLAMA+path],
+                     input=json.dumps(payload),capture_output=True,text=True,timeout=timeout+30)
+    if p.returncode!=0: raise RuntimeError(f"ollama: {p.stdout[:200]} {p.stderr[:200]}")
+    return json.loads(p.stdout)
 
 def llm(prompt):
-    r=api("/api/generate",{"model":GEN,"prompt":prompt,"stream":False,"keep_alive":"3m","format":"json","options":{"temperature":0,"num_ctx":4096}})
+    # num_thread 6: CT207 hat 8 geteilte CPUs, alle 8 anzufordern bremst
+    r=api("/api/generate",{"model":GEN,"prompt":prompt,"stream":False,"keep_alive":"3m","format":"json","options":{"temperature":0,"num_ctx":4096,"num_thread":6}})
     return (r.get("response") or "").strip()
 
 def embed(text):
@@ -72,10 +77,9 @@ def main():
     try: embs=json.load(open(BASE+"/embeddings.json"))
     except: embs={}
     # Kandidaten sammeln
-    cands=[]
+    cands=[]; errs=0
     for g,(cid,prior) in GROUPS.items():
         since=state.get(g,0); rows=fetch(cid,since)
-        if rows: state[g]=max(r["ts"] for r in rows)
         log(f"[{g}] {len(rows)} neue Nachrichten")
         i=0
         while i<len(rows):
@@ -87,7 +91,10 @@ def main():
                     if isinstance(f,dict) and f.get("frage") and f.get("antwort"):
                         f["produkt"]=f.get("produkt") if f.get("produkt") in ("portal","tool") else prior
                         cands.append(f)
-            except Exception as e: log(f"  chunk-err: {e}")
+            except Exception as e:
+                # Stand nur bis zum letzten ausgewerteten Abschnitt fortschreiben, Rest kommt beim naechsten Lauf
+                log(f"  chunk-err: {e}"); errs+=1; break
+            state[g]=chunk[-1]["ts"]
     log(f"Kandidaten: {len(cands)}")
     added=merged=0
     if cands:
@@ -140,5 +147,8 @@ def main():
     subprocess.run(["pct","push","173","/tmp/faq_index.html","/var/www/faq/index.html"],check=True,timeout=60)
     os.remove("/tmp/faq_index.html")
     log("DEPLOYED auf CT173")
+    if errs:
+        log(f"FEHLER: {errs} Gruppe(n) nicht vollstaendig ausgewertet, dort bleibt der Stand stehen")
+        sys.exit(1)
 
 if __name__=="__main__": main()
