@@ -61,7 +61,7 @@ PROMPT=("Du bekommst Nachrichten aus einer WhatsApp-Support-Gruppe rund um 'EEG 
  "ZWEI Produkte: produkt='portal' = Online-Webanwendung (Login, Zaehlpunkte, Netzbetreiber-Prozesse, Abrechnung im Portal); "
  "produkt='tool' = separates Desktop-Programm (.exe von stromregion.at, Versionen 1.8.x/2.x, lokaler Excel/SEPA-Export).\n"
  "Extrahiere NUR beantwortete, fuer andere nuetzliche Fragen/Probleme mit der gegebenen Loesung. KEIN Small-Talk, nichts Unbeantwortetes, keine rein privaten Einmal-Faelle.\n"
- "Die Antwort muss eine konkrete Loesung oder Auskunft enthalten, die WOERTLICH aus den Nachrichten hervorgeht; nichts ergaenzen oder raten. "
+ "Die Antwort muss eine konkrete Loesung oder Auskunft enthalten, die eindeutig aus den Nachrichten hervorgeht; nichts ergaenzen oder raten. "
  "WEGLASSEN: Antworten wie 'noch offen', 'unklar', reine Vermutungen, Momentaufnahmen ('geht heute wieder') und Fragen, auf die nur mit einer Gegenfrage reagiert wurde.\n"
  "'frage' als vollstaendiger, verstaendlicher Satz; 'antwort' in der Sie-Form.\n"
  "typ='haeufig' (allgemeine wiederkehrende Frage) oder typ='spezialfall' (seltener, aber lehrreicher Einzelfall).\n"
