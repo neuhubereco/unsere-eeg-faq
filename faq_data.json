@@ -210,6 +210,14 @@
         "id": "2512bf8ea6b7d38a"
       },
       {
+        "frage": "Darf man schon wieder Daten anfordern?",
+        "antwort": "<p>Ja, sobald die Daten 'grün' sind, kannst du sie anfordern und sie werden pfeilschnell verarbeitet.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "700b003662f2cd82"
+      },
+      {
         "frage": "Frage habe letzte Woche einen neuen Zählpunkt bekommen für Ladestation, ist wahrscheinlich noch nicht freigeschalten soll ich abwarten oder Löschen und neu registrieren oder wie weis ich wenn er freigeschalten ist.",
         "antwort": "<p>Warten Sie ab, ob der Zählpunkt freigeschaltet wird. Sie können später aktiviert werden. Falls Sie sich sicher sind, dass der Zählpunkt nicht aktiviert wird, kontaktieren Sie den Netzbetreiber.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
@@ -234,6 +242,22 @@
         "id": "5626f3d6f0bf493c"
       },
       {
+        "frage": "Wie kann ich die Zählpunktnummer in der Mitglieder-Ansicht markieren?",
+        "antwort": "<p>Im Detailbereich der Mitglieder-Ansicht, unterhalb der Tarife, ist die Zählpunktnummer markierbar und kopierbar.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "3580f0d4eccf2cd6"
+      },
+      {
+        "frage": "Wie kann ich einen einzelnen Zählpunkt deaktivieren und abrechnen?",
+        "antwort": "<p>Gehe zu <code>Prozesse → Zählpunkt abmelden</code>. Abgerechnet wird zu Jahresende oder beim nächsten Abrechnungszeitpunkt.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "cb7ebba181fd7314"
+      },
+      {
         "frage": "Wie kann ich einen Zählpunkt, bei dem die Netzfreigabe abgelaufen ist, wieder freischalten?",
         "antwort": "<p><strong>Prüfen Sie zunächst die History des Zählpunkts.</strong> Wenn keine Infos vorhanden sind, kontaktieren Sie den Netzbetreiber, da die Freigabe abgelaufen sein könnte. In diesem Fall muss der Stromanbieter die Freigabe erneut aktivieren.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
@@ -253,8 +277,22 @@
         "frage": "Was bedeuten die Datenqualitäts-Stufen L0/L1/L2/L3 im Energiedatenreport?",
         "antwort": "<ul><li>L0 = keine Daten vorhanden</li><li>L1 = gültige Echtwerte</li><li>L2 = Ersatzwert (zur Abrechnung geeignet, meist gelb)</li><li>L3 = Ersatzwert <strong>nicht</strong> zur Abrechnung geeignet (rot)</li></ul><p>Für eine saubere Abrechnung sollten keine L0/L3-Werte mehr vorhanden sein – vorher gezielt nachfordern.</p>",
         "kategorie": "Abrechnung",
-        "count": 7,
+        "count": 8,
         "id": "940a4fa3f15f23da"
+      },
+      {
+        "frage": "Sind Mandatsreferenz und Mandatsdatum bei SEPA Pflichtfelder?",
+        "antwort": "<p><strong>Ja:</strong> Mandatsdatum = Datum der Unterschrift auf der Einzugsermächtigung (per Kalender auswählen), Mandatsreferenz = eindeutige Nummer, üblicherweise die Mitgliedsnummer. Nur der Bankname darf leer bleiben. Liegt das Formular noch nicht vor, vorübergehend das aktuelle Datum verwenden und später korrigieren.</p>",
+        "kategorie": "Abrechnung",
+        "count": 5,
+        "id": "d8822b17da003b46"
+      },
+      {
+        "frage": "Wie funktioniert der SEPA-Lastschrift-Export im Portal?",
+        "antwort": "<p>In den EEG-Einstellungen den Schalter 'SEPA aktiv' setzen, dann erscheint bei der Abrechnung ein SEPA-Button statt des Excel-Downloads. <strong>Voraussetzung:</strong> IBAN, BIC, Kontoinhaber, Creditor-ID bzw. Mandatsdaten sind vollständig gepflegt; nur Mitglieder mit aktivierter Einzugsart (CORE/B2B) werden in die XML-Datenträger aufgenommen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 5,
+        "id": "c2c42dbfcaa162a4"
       },
       {
         "frage": "Wie kontrolliere ich vor der Abrechnung, ob die Energiedaten vollständig sind?",
@@ -262,20 +300,6 @@
         "kategorie": "Abrechnung",
         "count": 5,
         "id": "f3ba9fb1f9fa6de3"
-      },
-      {
-        "frage": "Sind Mandatsreferenz und Mandatsdatum bei SEPA Pflichtfelder?",
-        "antwort": "<p><strong>Ja:</strong> Mandatsdatum = Datum der Unterschrift auf der Einzugsermächtigung (per Kalender auswählen), Mandatsreferenz = eindeutige Nummer, üblicherweise die Mitgliedsnummer. Nur der Bankname darf leer bleiben. Liegt das Formular noch nicht vor, vorübergehend das aktuelle Datum verwenden und später korrigieren.</p>",
-        "kategorie": "Abrechnung",
-        "count": 4,
-        "id": "d8822b17da003b46"
-      },
-      {
-        "frage": "Wie funktioniert der SEPA-Lastschrift-Export im Portal?",
-        "antwort": "<p>In den EEG-Einstellungen den Schalter 'SEPA aktiv' setzen, dann erscheint bei der Abrechnung ein SEPA-Button statt des Excel-Downloads. <strong>Voraussetzung:</strong> IBAN, BIC, Kontoinhaber, Creditor-ID bzw. Mandatsdaten sind vollständig gepflegt; nur Mitglieder mit aktivierter Einzugsart (CORE/B2B) werden in die XML-Datenträger aufgenommen.</p>",
-        "kategorie": "Abrechnung",
-        "count": 4,
-        "id": "c2c42dbfcaa162a4"
       },
       {
         "frage": "In der Abrechnungsvorschau werden bei allen Mitgliedern 0 € angezeigt – was tun?",
@@ -348,6 +372,14 @@
         "kategorie": "Abrechnung",
         "count": 1,
         "id": "b10ca4f33ef1fdc3"
+      },
+      {
+        "frage": "Kann man die dienstleistung an die EEG Faktura auch einmal pro jahr statt einmal pro quartal umstellen?",
+        "antwort": "<p>Ja, das ist möglich. Kontaktiere den Support für die Einstellungen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "b18caa0292539f19"
       },
       {
         "frage": "KEP Server steht, kann das EEG-Faktura beeinträchtigen?",
@@ -455,6 +487,22 @@
         "id": "d650f39d3b9f0d98"
       },
       {
+        "frage": "Welche Bankkonto-Optionen gibt es für EEGs?",
+        "antwort": "<p>Es gibt verschiedene Optionen für Bankkonten bei EEGs, einschließlich kostenfreier Modelle wie Wise und Zahlungsdienstleister wie Mollie. Es ist ratsam, lokale Banken direkt zu kontaktieren, um spezifische Angebote zu erhalten.</p>",
+        "kategorie": "Steuer/USt",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "58182ec2f03e1a11"
+      },
+      {
+        "frage": "Wie erfolgt die Steuerung bei Gutschriften an Privatpersonen?",
+        "antwort": "<p>Gutschriften an Privatpersonen müssen ohne UST erfolgen, da Privatpersonen keine UST berechnen können. Reverse Charge ist nicht möglich.</p>",
+        "kategorie": "Steuer/USt",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "867b2b46d4fbf6ab"
+      },
+      {
         "frage": "Der Mailversand von Rechnungen/Gutschriften schlägt fehl – was tun?",
         "antwort": "<p>Zuerst prüfen, ob bei Mitgliedern fehlerhafte E-Mail-Adressen hinterlegt sind (Leerzeichen, mehrere Adressen). Ist alles korrekt, kann per Support-Ticket der Versand-Status zurückgesetzt und erneut angestoßen werden; ein zweiter Versuch klappt oft. Große Provider (Gmail/GMX) blockieren zudem ab ca. 500 Mails/Tag bzw. stufen Massenversand als Spam ein.</p>",
         "kategorie": "Fehler/Störung",
@@ -520,6 +568,14 @@
         "id": "f3c9a82c6a2b82d1"
       },
       {
+        "frage": "Wie erstelle ich ein Ticket in EEG Faktura?",
+        "antwort": "<p>Um ein Ticket zu erstellen, melden Sie sich bei <code>https://support.vfeeg.org/#login</code> an und folgen den Anweisungen im Supportbereich.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "4894a4777932a60a"
+      },
+      {
         "frage": "Wo finde ich Handbuch, Netzbetreiber-Infos und Kontaktadressen?",
         "antwort": "<p>Handbuch und Anleitungen unter docs.eegfaktura.at (u.a. Abrechnung, Netzbetreiber-Infos, Stammdaten-Import). Netzbetreiber-Kontaktadressen unter energiegemeinschaften.gv.at/austausch-netzbetreiber/, Netzbetreiber-IDs über smartmeter-portal.at. Ein Video-Tutorial ist nicht bekannt.</p>",
         "kategorie": "Bedienung",
@@ -574,6 +630,14 @@
         "kategorie": "Sonstiges",
         "count": 1,
         "id": "216e60ceafb5cd0d"
+      },
+      {
+        "frage": "Wird in der Info-Mail pro Monat die Leistungsspitze angezeigt?",
+        "antwort": "<p>Die Leistungsspitze wird derzeit nicht in der Info-Mail angezeigt. Es wird jedoch überlegt, diese Information für die Mitglieder hinzuzufügen, um ein Gefühl für die Leistungsbezogenen Netzgebühren zu geben.</p>",
+        "kategorie": "Sonstiges",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "f0d2f5a6da8d630f"
       }
     ],
     "spezial": [
@@ -590,6 +654,14 @@
         "kategorie": "Einrichtung",
         "count": 1,
         "id": "94ae04da9678f50f"
+      },
+      {
+        "frage": "Stammdatenimport bei beendeter Teilnahme",
+        "antwort": "<p>Für den Import von Teilnehmern, deren Teilnahme beendet wurde, aber noch eine Abschlussrechnung benötigt wird, den Zählpunktstatus als <code>ACTIVE</code> anlegen und ein Ticket schreiben, damit der Status geändert wird.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "1ec93f128e22fbaa"
       },
       {
         "frage": "Warum wird der 'Registrierungs' Button grau und nicht grün, obwohl alle Felder ausgefüllt sind?",
@@ -628,6 +700,13 @@
         "id": "5c0f2a95480c81f7"
       },
       {
+        "frage": "Kann ich ein Mitglied ohne Zählpunkt anlegen?",
+        "antwort": "<p><strong>Ja.</strong> Danach ist es nur über den Filter <code>Mitglieder</code> (nicht Verbraucher/Einspeiser) sichtbar, da ohne ZP keine normale Anzeige erfolgt. Zählpunkte können später übernommen werden.</p>",
+        "kategorie": "Mitglieder",
+        "count": 2,
+        "id": "f3fb306c595bf00f"
+      },
+      {
         "frage": "Kann man SEPA-Mandatsdaten für alle Mitglieder gesammelt hochladen?",
         "antwort": "<p><strong>Nein</strong>, ein Massen-Update der Stammdaten (z.B. SEPA-Daten) ist nicht vorgesehen; die SEPA-Felder sind erst später hinzugekommen und nicht per Excel importierbar. Änderungen müssen einzeln je Mitglied vorgenommen werden.</p>",
         "kategorie": "Mitglieder",
@@ -656,13 +735,6 @@
         "id": "a0f4f8f8ef1cb15d"
       },
       {
-        "frage": "Kann ich ein Mitglied ohne Zählpunkt anlegen?",
-        "antwort": "<p><strong>Ja.</strong> Danach ist es nur über den Filter <code>Mitglieder</code> (nicht Verbraucher/Einspeiser) sichtbar, da ohne ZP keine normale Anzeige erfolgt. Zählpunkte können später übernommen werden.</p>",
-        "kategorie": "Mitglieder",
-        "count": 1,
-        "id": "f3fb306c595bf00f"
-      },
-      {
         "frage": "Warm empfiehlt sich, kurz vor Quartalsende keine neuen Mitglieder mehr aufzunehmen?",
         "antwort": "<p>Ab dem 20./22. eines Monats vor Abrechnungsende keine neuen Mitglieder mehr aufnehmen – das reduziert erfahrungsgemäß Datenprobleme bei der folgenden Abrechnung.</p>",
         "kategorie": "Mitglieder",
@@ -675,6 +747,14 @@
         "kategorie": "Mitglieder",
         "count": 1,
         "id": "4a3a1a155e449507"
+      },
+      {
+        "frage": "Wie kann ich einen Teilnehmer komplett löschen?",
+        "antwort": "<p>Um einen Teilnehmer zu löschen, der nie aktiviert wurde, entferne den Zählpunkt und erstelle einen neuen. Wenn der Zählpunkt aktiviert war, warte bis nach der nächsten Abrechnungsperiode.</p>",
+        "kategorie": "Mitglieder",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "850c6a45fa49de74"
       },
       {
         "frage": "Wo kann ich die Stammdaten korrigieren, wenn sie nicht korrekt angezeigt werden?",
@@ -1009,6 +1089,14 @@
         "id": "af3514e9413e6ee1"
       },
       {
+        "frage": "CCMI bei Lieferantenwechsel",
+        "antwort": "<p>CCMI tritt bei einem Lieferantenwechsel auf, obwohl dieser üblicherweise lückenlos funktionieren sollte. Überprüfen Sie die Eingabe und den Datenfluss.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "27a62fd69200d073"
+      },
+      {
         "frage": "Der Datei-Upload (z.B. Vollmacht) beim Anmelden schlägt fehl.",
         "antwort": "<p>Bekanntes, in Bearbeitung befindliches Problem. Workaround: Die Anmeldung ohne Datei-Upload durchführen – das funktioniert normal weiter, das Dokument kann später nachgereicht werden.</p>",
         "kategorie": "Fehler/Störung",
@@ -1136,6 +1224,14 @@
         "kategorie": "Installation/Updates",
         "count": 3,
         "id": "e0f581b74839062d"
+      },
+      {
+        "frage": "Wie regeln wir die Peer to Peer Verträge in Zukunft?",
+        "antwort": "<p>Die Regelung für Peer to Peer Verträge in der Zukunft ist noch offen. Bitte kontaktiere den Support für spezifische Fragen.</p>",
+        "kategorie": "Sonstiges",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "cac574c1bfbfd1e5"
       }
     ]
   },
@@ -1152,7 +1248,7 @@
         "frage": "Wofür dient der Zählpunkt-Abgleich mit der Netzbetreiber-Teilnehmerliste?",
         "antwort": "<p>Der Abgleich zeigt Abweichungen (meist beim Aktivierungsdatum) zwischen Faktura-Stammdaten und Netzbetreiber-Liste sowie fehlende ZP auf beiden Seiten – hilfreich, wenn Energiedaten fehlen, weil ein ZP beim Netzbetreiber erst später aktiv wurde (führt sonst zu falschen L0-Werten). Die Teilnehmerliste in Faktura unter <code>Prozesse</code> anfordern und ins Tool laden.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
-        "count": 2,
+        "count": 3,
         "id": "67991162a186d179"
       },
       {
@@ -1331,6 +1427,14 @@
         "id": "ee84d681feba4138"
       },
       {
+        "frage": "Fehler beim Import von Stammdaten nach Update.",
+        "antwort": "<p>Nach dem Update kann es beim Import von Stammdaten zu Fehlern kommen. Prüfen Sie, ob die Creditor-Id in den Einstellungen mit der in der Excel-Datei übereinstimmt. Falls nicht, die fehlende Creditor-Id nachtragen.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "d9422254bc366caf"
+      },
+      {
         "frage": "Kann die Software auch am Mac benutzen?",
         "antwort": "<p>Nein, die Software ist derzeit nur für Windows verfügbar.</p>",
         "kategorie": "Installation/Updates",
@@ -1355,6 +1459,14 @@
       }
     ],
     "spezial": [
+      {
+        "frage": "Stammdaten-Export und -Import Probleme",
+        "antwort": "<p>Im EEG-Faktura-Tool 4.1.0 bricht der Stammdaten-Import ab, wenn der Export zwei neue Spalten („Beitrittsgebühr (€)“ und „Beitrittsgebühr Status“) enthält. Dies kann auf einen API-Fehler zurückzuführen sein. Überprüfen Sie die API-Ausgabe und die Datenstruktur.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "efda4e60b8d776e7"
+      },
       {
         "frage": "Nach Mieterwechsel gibt es fehlerhafte Daten im Tool – was beachten?",
         "antwort": "<p>Bei Mieterwechsel meldet der Netzbetreiber den ZP ab und den Nachmieter neu an; die Faktura ordnet das korrekt zu, aber bei der API-Abfrage werden nur ZP-Nummern angeliefert, wodurch ältere Zuordnungen verloren gehen können. Solche Import-Änderungen (Feature ab <code>Version 1.8.8</code>) vor produktivem Einsatz gut testen.</p>",
@@ -1462,6 +1574,14 @@
         "id": "0214764fbbc410a3"
       },
       {
+        "frage": "Was tun, wenn beim Import der Energiedaten ein Fehler auftritt und das Programm einfriert?",
+        "antwort": "<p>Überprüfe, ob vor der Fehlermeldung eine Infobox angezeigt wurde. Kontrolliere den betroffenen Zählpunkt. Problem könnte durch alte Mitglieder mit nicht mehr existierenden Tarifen verursacht werden.</p>",
+        "kategorie": "Fehler/Störung",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "bb910f64f7d47b3d"
+      },
+      {
         "frage": "Wie prüfe ich mit dem Tool 15-Minuten-Werte einzelner Zählpunkte?",
         "antwort": "<p>Das Tool erlaubt eine granulare Ansicht der 15-Minuten-Werte je ZP zur Fehlersuche. <strong>Wichtig:</strong> Vor Meldung eines Cases bei EEGfaktura zusätzlich per Energiedatenexport (Excel) prüfen, ob der Fehler auch in den Originaldaten von EEG Faktura auftritt, da das Tool nur ein Zusatztool ist.</p>",
         "kategorie": "Fehler/Störung",
@@ -1495,6 +1615,14 @@
         "kategorie": "Bedienung",
         "count": 1,
         "id": "1b2aa8db45ae7980"
+      },
+      {
+        "frage": "Was tun, wenn beim API-Import der Mitglieder ein Fehler wegen fehlenden Mitgliedsbeitrags auftaucht?",
+        "antwort": "<p>Überprüfe, ob Mitglieder ohne Mitgliedsbeitrag vorhanden sind. Arbeitet um, indem Mitgliederdaten über Excel importiert werden. Problem wird in der nächsten Version behoben.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "5bbdbc06979fdc26"
       }
     ]
   },
