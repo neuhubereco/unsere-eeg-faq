@@ -359,19 +359,19 @@
         "id": "79df8350e0404ce1"
       },
       {
-        "frage": "Kann man an mehrere E-Mail-Adressen eines Mitglieds Rechnungen senden?",
-        "antwort": "<p>Ja, mehrere Adressen im E-Mail-Feld mit Strichpunkt (;) ohne Leerzeichen danach trennen.</p>",
-        "kategorie": "Abrechnung",
-        "count": 1,
-        "id": "b10ca4f33ef1fdc3"
-      },
-      {
         "frage": "Kann die Dienstleistung von EEG Faktura jährlich statt quartalsweise verrechnet werden?",
         "antwort": "<p>Ja, das ist möglich. Wenden Sie sich dafür an den Support.</p>",
         "kategorie": "Abrechnung",
         "count": 1,
         "added": "2026-11-03",
         "id": "b18caa0292539f19"
+      },
+      {
+        "frage": "Kann man an mehrere E-Mail-Adressen eines Mitglieds Rechnungen senden?",
+        "antwort": "<p>Ja, mehrere Adressen im E-Mail-Feld mit Strichpunkt (;) ohne Leerzeichen danach trennen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "id": "b10ca4f33ef1fdc3"
       },
       {
         "frage": "KEP Server steht, kann das EEG-Faktura beeinträchtigen?",
@@ -436,6 +436,14 @@
         "id": "764a13a5d80c0a02"
       },
       {
+        "frage": "Wie regiert die EEG auf den neuen ÖMAG Marktpreis (Photovoltaik und andere Energieträger)?",
+        "antwort": "<p>Wir warten ab und bieten Mitgliedern eine Preisstabilität. Wenn der Marktpreis unter 5,5 ct/kWh sinkt, senken wir die Vergütung nicht sofort. Im Sommer, wenn der Spot-Preis niedrig ist, bleibt die Vergütung konstant.</p>",
+        "kategorie": "Tarife",
+        "count": 1,
+        "added": "2026-11-08",
+        "id": "465191c4e0e00575"
+      },
+      {
         "frage": "Wie sind die Tarife für Mitglieder?",
         "antwort": "<p>Die Tarife liegen bei etwa 10-14,5 ct/kWh netto, abhängig vom Verbrauch. Es gibt auch eine Grundgebühr von 5,28 € pro Monat.</p>",
         "kategorie": "Tarife",
@@ -477,14 +485,6 @@
         "kategorie": "Steuer/USt",
         "count": 1,
         "id": "d650f39d3b9f0d98"
-      },
-      {
-        "frage": "Welche Bankkonto-Optionen gibt es für EEGs?",
-        "antwort": "<p>In der Community wurden u. a. kostenfreie Konten wie Wise und Zahlungsdienstleister wie Mollie genannt. Konditionen für Vereinskonten fragen Sie am besten direkt bei lokalen Banken an.</p>",
-        "kategorie": "Sonstiges",
-        "count": 1,
-        "added": "2026-11-03",
-        "id": "58182ec2f03e1a11"
       },
       {
         "frage": "Muss auf Gutschriften an private Erzeuger Umsatzsteuer ausgewiesen werden?",
@@ -608,6 +608,14 @@
         "kategorie": "Bedienung",
         "count": 2,
         "id": "57bdb6db47b6ebb5"
+      },
+      {
+        "frage": "Welche Bankkonto-Optionen gibt es für EEGs?",
+        "antwort": "<p>In der Community wurden u. a. kostenfreie Konten wie Wise und Zahlungsdienstleister wie Mollie genannt. Konditionen für Vereinskonten fragen Sie am besten direkt bei lokalen Banken an.</p>",
+        "kategorie": "Sonstiges",
+        "count": 1,
+        "added": "2026-11-03",
+        "id": "58182ec2f03e1a11"
       },
       {
         "frage": "Wie gehe ich mit DSGVO/Datenschutz gegenüber den Mitgliedern um?",
@@ -1200,11 +1208,27 @@
         "kategorie": "Installation/Updates",
         "count": 3,
         "id": "e0f581b74839062d"
+      },
+      {
+        "frage": "Kosten für die Verwaltung einer P2P (2-3 Teilnehmer) bei VFEEG?",
+        "antwort": "<p>Die Verwaltung einer P2P-Gruppe mit 2-3 Teilnehmern bei VFEEG kostet 24 € pro Jahr. Wenn innerhalb der Familie Strom geschenkt wird und keine Rechnung verrechnet wird, ist eine Nullrechnung nicht sinnvoll.</p>",
+        "kategorie": "Sonstiges",
+        "count": 1,
+        "added": "2026-11-08",
+        "id": "b434087a8672ad84"
       }
     ]
   },
   "tool": {
     "faq": [
+      {
+        "frage": "Funktioniert der Mitglieder-Import per API, wenn keine Mitgliedstarife hinterlegt sind?",
+        "antwort": "<p>Ja, der Import von Mitgliedern per API funktioniert auch ohne hinterlegte Mitgliedstarife.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-08",
+        "id": "942d3264f9c51b43"
+      },
       {
         "frage": "Wie nutze ich das Tool für mehrere Energiegemeinschaften parallel?",
         "antwort": "<p>Mehrere EEGs werden derzeit offiziell nicht unterstützt (Mandantenfähigkeit auf der Roadmap).</p><p>Workaround:</p><ol><li>Programmverzeichnis kopieren</li><li>Ordnernamen anpassen</li><li>Die EXE im kopierten Verzeichnis starten</li><li>Bei Updates die neuen Programmdateien manuell in alle Kopien übertragen</li></ol>",
@@ -1271,6 +1295,14 @@
         "count": 1,
         "added": "2026-08-02",
         "id": "1d5ecc35b1f59a12"
+      },
+      {
+        "frage": "Kann die SEPA-Datei, die aus dem EEG-Faktura-Tool erstellt wird, 1:1 in Infinity eingespielt werden?",
+        "antwort": "<p>Ja, die SEPA-Datei kann 1:1 in Infinity eingespielt werden, solange keine Fehlermeldungen auftreten.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-11-08",
+        "id": "9c7f9b4a28f61302"
       },
       {
         "frage": "SEPA-Import in die Banksoftware (ELBA/Infinity/George) schlägt fehl – was prüfen?",
@@ -1387,20 +1419,20 @@
         "id": "a31e0716d405d7ec"
       },
       {
-        "frage": "Es gibt mehrere Versionen des Stromregion.at EEG Faktura Tools, welche ist aktuell die aktuellste?",
-        "antwort": "<p>Die aktuellste Version ist 2.x. Sie finden den Downloadlink <a href=\"https://stromregion.at/eeg-faktura-tool/\">hier</a>.</p>",
-        "kategorie": "Installation/Updates",
-        "count": 1,
-        "added": "2026-07-26",
-        "id": "ee84d681feba4138"
-      },
-      {
         "frage": "Beim Import der Abrechnung meldet das Tool, dass die Creditor-ID abweicht – was tun?",
         "antwort": "<p>Prüfen Sie, ob die Creditor-ID in den Einstellungen mit der in der Excel-Datei übereinstimmt, und tragen Sie sie dort nach, wo sie fehlt.</p>",
         "kategorie": "Installation/Updates",
         "count": 1,
         "added": "2026-11-03",
         "id": "d9422254bc366caf"
+      },
+      {
+        "frage": "Es gibt mehrere Versionen des Stromregion.at EEG Faktura Tools, welche ist aktuell die aktuellste?",
+        "antwort": "<p>Die aktuellste Version ist 2.x. Sie finden den Downloadlink <a href=\"https://stromregion.at/eeg-faktura-tool/\">hier</a>.</p>",
+        "kategorie": "Installation/Updates",
+        "count": 1,
+        "added": "2026-07-26",
+        "id": "ee84d681feba4138"
       },
       {
         "frage": "Kann die Software auch am Mac benutzen?",
