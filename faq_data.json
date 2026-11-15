@@ -46,6 +46,22 @@
         "id": "f3e0b0b2a5d08f3e"
       },
       {
+        "frage": "Wie kann ich Teilnehmer von einer EEG auf P2P umstellen?",
+        "antwort": "<p>Zählpunkte in der EEG abmelden und in der P2P wieder neu anmelden. Es ist nicht erforderlich, einen zweiten Benutzer zu registrieren, wenn die EEG weiterhin aktiv ist.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "bc44462f37115fe1"
+      },
+      {
+        "frage": "Wie läuft es ab, wenn ein Kunde zu unserer EEG mit seinem Bezugspunkt zu uns wechseln will?",
+        "antwort": "<p>Der Kunde meldet sich bei der EEG an. Anschließend muss der Kunde bei der EEG und der Zählpunkt beim Netzbetreiber angemeldet werden. Es ist nicht erforderlich, dass der Kunde den Vertrag bei der bisherigen Versorgung kündigt.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "ab154fcd423ab55b"
+      },
+      {
         "frage": "Wie melde ich ein Mitglied korrekt an, damit ein Freigabeprozess beim Netzbetreiber ausgelöst wird?",
         "antwort": "<ol><li>Mitgliederdaten/Tarif eingeben</li><li>Zählpunkt hinzufügen</li><li><code>Registrieren</code></li><li><code>Mitglied zulassen</code></li></ol><p>Wird der letzte Schritt übersehen, geht kein Prozess raus. Bleibt der Button grün/inaktiv, alle Pflichtfelder prüfen (ZP-Nummer 33-stellig, Teilnahmefaktor, Bankverbindung, Mandatsdatum per Kalender ausgewählt).</p>",
         "kategorie": "Mitglieder",
@@ -218,12 +234,28 @@
         "id": "0e35ebd0a7213521"
       },
       {
+        "frage": "Kann ich Zählpunkte, die ab 1.1.2027 in der EEG eingebunden sein sollen, jetzt schon erfassen und steuern, damit der Besitzer sie am 31.12.2026 freischaltet?",
+        "antwort": "<p>Ja, Sie können die Zählpunkte jetzt erfassen und die Aktivierung für den 31.12.2026 vorsehen. Die Mitglieder können in der EEG faktura hinterlegt werden und die Aktivierung terminiert.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "0e25742bf30f3e47"
+      },
+      {
         "frage": "Wann werden Zählpunkte aktualisiert?",
         "antwort": "<p>Werte > 0 kWh wurden an den Tagen angezeigt, nach Umstellung in Faktura.</p>",
         "kategorie": "Zählpunkte/Netzbetreiber",
         "count": 1,
         "added": "2026-09-20",
         "id": "668a235d54c82356"
+      },
+      {
+        "frage": "Was tun bei einer Fehlermeldung beim Import von Energie-Daten in EEG-Faktura?",
+        "antwort": "<p>Überprüfen Sie, ob die betroffenen Zählpunkte (ZP) in der Meldung korrekt sind und ob das Aktiv-/Inaktiv-Datum mit Ihren Aufzeichnungen übereinstimmt. Falls Zweifel bestehen, die ZP-Liste über EEG-Faktura anfordern und abgleichen.</p>",
+        "kategorie": "Zählpunkte/Netzbetreiber",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "05e9ed53b14fae3f"
       },
       {
         "frage": "Wie kann ich den Jahresverbrauch eines Teilnehmers in EEG Faktura ansehen?",
@@ -656,6 +688,14 @@
         "id": "94ae04da9678f50f"
       },
       {
+        "frage": "Kann ein Verein zwei regionale EEGs betreiben?",
+        "antwort": "<p>Nein, pro Verein kann nur eine EEG betrieben werden. Es ist nicht möglich, zwei regionale EEGs mit einem Verein zu betreiben.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "0c65840bc900a081"
+      },
+      {
         "frage": "Stammdatenimport bei beendeter Teilnahme",
         "antwort": "<p>Für den Import von Teilnehmern, deren Teilnahme beendet wurde, aber noch eine Abschlussrechnung benötigt wird, den Zählpunktstatus als <code>ACTIVE</code> anlegen und ein Ticket schreiben, damit der Status geändert wird.</p>",
         "kategorie": "Einrichtung",
@@ -670,6 +710,14 @@
         "count": 1,
         "added": "2026-08-30",
         "id": "93a9fbd068d582d4"
+      },
+      {
+        "frage": "Wie kann ich mich mit meinem alten EDA-Account in EDA einloggen, wenn ich eine EEG auf KEP umgestellt habe und eine neue P2P gegründet habe?",
+        "antwort": "<p>Es ist möglich, dass du trotz der KEP-Umstellung weiterhin auf das Anwenderportal und die historischen Daten zugreifen kannst. Es wird jedoch empfohlen, sich direkt bei EDA zu erkundigen.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-15",
+        "id": "aec048f0bd8e621c"
       },
       {
         "frage": "Warum liegt die vorgeschlagene Mitgliedsnummer höher als die erste freie / neue Mitglieder erscheinen nicht in Reihenfolge?",
