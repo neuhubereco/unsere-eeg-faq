@@ -97,7 +97,8 @@ footer{{color:var(--mut);font-size:.82rem;text-align:center;padding:20px 20px 46
 <a class="bigbtn ghost" href="https://github.com/neuhubereco/unsere-eeg-faq">✏️ FAQ verbessern<small>offen auf GitHub — Korrekturen &amp; Ergänzungen willkommen</small></a>
 </div>
 <footer>{tot} Einträge · Stand {stamp} · Automatisch per KI aus den Community-Chats zusammengefasst und mit <strong>lokaler KI (on-premise)</strong> laufend aktuell gehalten. Ohne Gewähr.<br>
-Kein offizieller Support. Bei individuellen Fällen: Netzbetreiber bzw. EEG-Faktura-Betreiber kontaktieren.</footer>
+Kein offizieller Support. Bei individuellen Fällen: Netzbetreiber bzw. EEG-Faktura-Betreiber kontaktieren.<br>
+<a href="https://unsere-eeg.at/impressum.html">Impressum</a> · <a href="https://unsere-eeg.at/datenschutz.html">Datenschutz</a></footer>
 <script>
 var tabs=document.querySelectorAll('.tab'),s=document.getElementById('s');
 tabs.forEach(function(t){{t.onclick=function(){{tabs.forEach(x=>x.classList.remove('on'));t.classList.add('on');
