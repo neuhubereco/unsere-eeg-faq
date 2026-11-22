@@ -46,6 +46,14 @@
         "id": "f3e0b0b2a5d08f3e"
       },
       {
+        "frage": "Was muss bei der Registrierung einer neuen regionalen EEG bei ebutilities für den KEP-Anteil ausgewählt werden?",
+        "antwort": "<p>Wähle bei der Registrierung den KEP-Anteil als <code>Bestehender KEP</code>. Im Feld <strong>KEP-Name</strong> trage <code>VFEEG</code> und im Feld <strong>Backend</strong> <code>EEG Faktura</code> ein.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "b8578ad4c50a41b9"
+      },
+      {
         "frage": "Wie kann ich Teilnehmer von einer EEG auf P2P umstellen?",
         "antwort": "<p>Zählpunkte in der EEG abmelden und in der P2P wieder neu anmelden. Es ist nicht erforderlich, einen zweiten Benutzer zu registrieren, wenn die EEG weiterhin aktiv ist.</p>",
         "kategorie": "Einrichtung",
@@ -484,6 +492,14 @@
         "id": "56dbade0d3719aeb"
       },
       {
+        "frage": "Wie wirken sich Netzgebühren bei einer regionalen EEG aus, wenn der Bezieher bereits eine Leistungsmessung hat?",
+        "antwort": "<p>Ab 2027 werden bei Leistungsmessung alle Energiemengen, unabhängig von der Quelle (EEG oder nicht), berücksichtigt. Für 2027 sind die Prozentsätze für NE6 und NE7 22%, für NE4 und NE5 58%, und für SNAP und WiNAP 2% und 38%.</p>",
+        "kategorie": "Tarife",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "0e6f22c90e54f703"
+      },
+      {
         "frage": "Wie richte ich USt-Ausweis / Vorsteuerabzug in EEG Faktura ein?",
         "antwort": "<p>UID-Nummer in den EEG-Stammdaten eintragen und in den Verbrauchstarifen den Haken 'USt' setzen und den Steuersatz (20%) eintragen. Ist die EEG steuerpflichtig, kann ein Unternehmer die ausgewiesene USt als Vorsteuer geltend machen; bei Kleinunternehmerregelung wird keine USt ausgewiesen und es gibt keine Vorsteuer-Rückholung.</p>",
         "kategorie": "Steuer/USt",
@@ -642,6 +658,13 @@
         "id": "57bdb6db47b6ebb5"
       },
       {
+        "frage": "Wie lange dauert die Bearbeitung eines Support-Tickets?",
+        "antwort": "<p>Der Support wird ehrenamtlich betrieben, die Bearbeitungszeit ist daher variabel (Tage bis mehrere Wochen). Einfache Fragen werden oft schneller beantwortet, weil erfahrene Nutzer mitantworten.</p>",
+        "kategorie": "Sonstiges",
+        "count": 2,
+        "id": "216e60ceafb5cd0d"
+      },
+      {
         "frage": "Welche Bankkonto-Optionen gibt es für EEGs?",
         "antwort": "<p>In der Community wurden u. a. kostenfreie Konten wie Wise und Zahlungsdienstleister wie Mollie genannt. Konditionen für Vereinskonten fragen Sie am besten direkt bei lokalen Banken an.</p>",
         "kategorie": "Sonstiges",
@@ -655,13 +678,6 @@
         "kategorie": "Sonstiges",
         "count": 1,
         "id": "4eaee2b829fa1eea"
-      },
-      {
-        "frage": "Wie lange dauert die Bearbeitung eines Support-Tickets?",
-        "antwort": "<p>Der Support wird ehrenamtlich betrieben, die Bearbeitungszeit ist daher variabel (Tage bis mehrere Wochen). Einfache Fragen werden oft schneller beantwortet, weil erfahrene Nutzer mitantworten.</p>",
-        "kategorie": "Sonstiges",
-        "count": 1,
-        "id": "216e60ceafb5cd0d"
       },
       {
         "frage": "Wird in der Info-Mail pro Monat die Leistungsspitze angezeigt?",
@@ -696,6 +712,14 @@
         "id": "0c65840bc900a081"
       },
       {
+        "frage": "Kann eine Wohnungseigentümergemeinschaft (WEG) mit Photovoltaik in die EEG einspeisen?",
+        "antwort": "<p>Ja, das ist technisch möglich über den zuteilungsfaktor. In der Praxis macht es jedoch meist keinen Sinn, da durch den Teilnahmefaktor immer Energie in die EEG geliefert wird, obwohl teilweise Eigenbedarf vorhanden ist.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "0be95de151b45740"
+      },
+      {
         "frage": "Stammdatenimport bei beendeter Teilnahme",
         "antwort": "<p>Für den Import von Teilnehmern, deren Teilnahme beendet wurde, aber noch eine Abschlussrechnung benötigt wird, den Zählpunktstatus als <code>ACTIVE</code> anlegen und ein Ticket schreiben, damit der Status geändert wird.</p>",
         "kategorie": "Einrichtung",
@@ -710,6 +734,14 @@
         "count": 1,
         "added": "2026-08-30",
         "id": "93a9fbd068d582d4"
+      },
+      {
+        "frage": "Welche Maßnahmen sind zu ergreifen, wenn der Antrag für eine neue EEG abgelehnt wird, da pro Verein nur eine EEG zulässig ist?",
+        "antwort": "<p>Gründe einen neuen Verein oder gründe einen Haupt- und Sub-verein. Bei letzterem kannst du denselben Vorstand und andere Strukturen einsetzen.</p>",
+        "kategorie": "Einrichtung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "d92c10e35937add7"
       },
       {
         "frage": "Wie kann ich mich mit meinem alten EDA-Account in EDA einloggen, wenn ich eine EEG auf KEP umgestellt habe und eine neue P2P gegründet habe?",
@@ -896,6 +928,13 @@
         "id": "91bd1817ac56765f"
       },
       {
+        "frage": "Wie kann ich eine falsch abgerechnete Abrechnung zurücksetzen?",
+        "antwort": "<p>Per Support-Ticket möglich, aber aufwändig und ungern gesehen – daher immer <strong>vor der Abrechnung die Datenkontrolle</strong> durchführen. Sind Rechnungen schon versendet, ggf. eine eigene Gutschrift in separatem Nummernkreis manuell ausstellen.</p>",
+        "kategorie": "Abrechnung",
+        "count": 3,
+        "id": "b5f9a5dffad91cfc"
+      },
+      {
         "frage": "Bekannter SEPA-XML-Bug im Feld 'Ustrd' beim Bankimport – was tun?",
         "antwort": "<p>Bekannter Bug in der SEPA-Exportfunktion. Workaround: Vor der SEPA-Erstellung erst die Rechnungen versenden – wird das übersprungen, tritt der Fehler im XML gehäuft auf. Bei Bedarf Ticket erstellen. Die SEPA-Erstellung ist unabhängig vom E-Mail-Versand der Rechnungen.</p>",
         "kategorie": "Abrechnung",
@@ -964,13 +1003,6 @@
         "kategorie": "Abrechnung",
         "count": 2,
         "id": "38f2d72a449f810d"
-      },
-      {
-        "frage": "Wie kann ich eine falsch abgerechnete Abrechnung zurücksetzen?",
-        "antwort": "<p>Per Support-Ticket möglich, aber aufwändig und ungern gesehen – daher immer <strong>vor der Abrechnung die Datenkontrolle</strong> durchführen. Sind Rechnungen schon versendet, ggf. eine eigene Gutschrift in separatem Nummernkreis manuell ausstellen.</p>",
-        "kategorie": "Abrechnung",
-        "count": 2,
-        "id": "b5f9a5dffad91cfc"
       },
       {
         "frage": "Wie kann ich rückwirkend Monate abrechnen, für die ich erst später Mitglied wurde?",
@@ -1258,6 +1290,14 @@
         "id": "e0f581b74839062d"
       },
       {
+        "frage": "Gibt es eine Möglichkeit, eine Zusammenfassung der wichtigsten Daten für Besprechungen oder Rechnungsprüfungen auszudrucken?",
+        "antwort": "<p>Im Moment gibt es keine eingebaute Funktion für eine A4-Druckvorschau oder Zusammenfassung. Sie können jedoch manuell die notwendigen Daten auswählen und in einem Dokument zusammenfassen.</p>",
+        "kategorie": "Sonstiges",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "84c5e7e0dd16c34b"
+      },
+      {
         "frage": "Kosten für die Verwaltung einer P2P (2-3 Teilnehmer) bei VFEEG?",
         "antwort": "<p>Die Verwaltung einer P2P-Gruppe mit 2-3 Teilnehmern bei VFEEG kostet 24 € pro Jahr. Wenn innerhalb der Familie Strom geschenkt wird und keine Rechnung verrechnet wird, ist eine Nullrechnung nicht sinnvoll.</p>",
         "kategorie": "Sonstiges",
@@ -1353,6 +1393,14 @@
         "id": "9c7f9b4a28f61302"
       },
       {
+        "frage": "Kann man bei vierteljährlicher Abrechnungseinstellung die Abrechnungsstichtage so einstellen, dass man für 3 Monate später abrechnet und dann erst verrechnet?",
+        "antwort": "<p>Ja, das ist denkbar, aber es führt zu zwei Rechnungsläufen, die laut Plan zu spät erfolgen. Das Problem liegt in der Erstellung der SEPA-Files, da die Bankspesen reduziert werden könnten, aber zusätzliche Arbeit entsteht.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "4f366a9b1a52ded5"
+      },
+      {
         "frage": "SEPA-Import in die Banksoftware (ELBA/Infinity/George) schlägt fehl – was prüfen?",
         "antwort": "<p>Häufigste Ursache: <strong>Creditor-ID</strong> nicht (identisch) in Faktura und Tool hinterlegt, oder Zahlungsart (CORE/B2B) bzw. Mandat einzelner Mitglieder nicht gepflegt. Auch ein fehlender eigener BIC in den Tool-Einstellungen oder ein falsch eingegebenes Mandatsdatum können die Ursache sein.</p>",
         "kategorie": "Abrechnung",
@@ -1366,6 +1414,14 @@
         "count": 1,
         "added": "2026-07-12",
         "id": "2962284273abae7b"
+      },
+      {
+        "frage": "Wie kann ich bei einem Erzeuger ohne hinterlegten Tarif eine manuelle Abrechnung durchführen?",
+        "antwort": "<p>Manuelle Rechnung in separatem Nummernkreis erstellen. Im konkreten Fall kann auch eine manuelle Gutschrift hinten anhängen (letzte Nummer), da die Abrechnung für den aktuellen Jahrabschluss normalerweise fertig ist.</p>",
+        "kategorie": "Abrechnung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "5dd7f784025ca133"
       },
       {
         "frage": "Wie schließe ich Überweiser (kein SEPA) aus dem SEPA-Datenträger aus?",
@@ -1429,6 +1485,14 @@
         "kategorie": "Bedienung",
         "count": 1,
         "id": "dc2859122ab4f65e"
+      },
+      {
+        "frage": "Was soll ich tun, wenn beim Importieren von SEPA-Dateien eine Fehlermeldung 'Empfänger IBAN ist falsch' kommt?",
+        "antwort": "<p>Bitte senden Sie einen Screenshot der Fehlermeldung per PN an den Support. Es wird empfohlen, die SEPA-Dateien von EEGFaktura zu verwenden und die Button SEPA zu nutzen, um die Dateien zusammenzufassen und herunterzuladen.</p>",
+        "kategorie": "Bedienung",
+        "count": 1,
+        "added": "2026-11-22",
+        "id": "43f123d1bd358c28"
       },
       {
         "frage": "Wie konfiguriere ich den E-Mail-Versand (SMTP), insbesondere für Gmail?",
